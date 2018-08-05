@@ -3,9 +3,9 @@
     // includes
     require 'Session.php';
     if (PupSession::getUserType() == 'M')
-        header('/manager.php');
+        header('Location: /manager.php');
     else if (PupSession::getUserType() == 'C')
     {
-        header('/customer.php');
+        header('Location: /customer.php');
     }
 ?>
