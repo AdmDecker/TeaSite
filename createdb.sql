@@ -4,7 +4,7 @@ CREATE TABLE users
 	userName VARCHAR(255) NOT NULL,
 	password VARCHAR(255) NOT NULL,
     role CHAR,
-    teas INT,
+    teas int,
 	PRIMARY KEY (userID)
 );
 
