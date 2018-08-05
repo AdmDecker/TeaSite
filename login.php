@@ -26,7 +26,6 @@
             $_SESSION['username'] = $username;
             $_SESSION['userID'] = $userID;
             $_SESSION['userType'] = $db->getUserType($userID);
-            $_SESSION['teas'] = $db->getTeas($userID);
             echo "success";
         }	
 		else
