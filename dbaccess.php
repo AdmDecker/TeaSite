@@ -105,4 +105,5 @@ class dbAccess
         $statement->bindParam(':userID', $userID);
         $statement->execute();
     }
+}
 ?>
