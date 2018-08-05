@@ -27,11 +27,10 @@ class dbAccess
     {
         //Insert user to database
         $username = trim($username);
-        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, :teas)");
+        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0)");
         $statement->bindParam(':username', $username);
         $statement->bindParam(':password', password_hash($password, PASSWORD_DEFAULT));
         $statement->bindParam(':role', $role);
-        $steatement->bindParam(':teas', 0);
         $statement->execute();
         return $this->dbObject->lastInsertId();
     }
