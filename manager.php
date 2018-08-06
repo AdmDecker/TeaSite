@@ -44,7 +44,7 @@
 </script>
 
     <body>
-        <table>
+        <table class='center'>
             <tr>
                 <th>Name</th>
                 <th>Teas</th>
