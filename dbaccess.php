@@ -40,7 +40,6 @@ class dbAccess
         $statement = $this->dbObject->prepare('SELECT * FROM users WHERE role=:role');
         $statement->bindParam(':role', $role);
         $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_OBJ);
         return $statement->fetchAll();
     }
     
