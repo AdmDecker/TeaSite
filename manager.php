@@ -45,11 +45,11 @@
 
     <body>
         <table>
-            <th>
-                <td>Name</td>
-                <td>Teas</td>
-                <td>Button</td>
-            </th>
+            <tr>
+                <th>Name</th>
+                <th>Teas</th>
+                <th>Button</th>
+            </tr>
             <?php
                 foreach($data as $key=>$user)
                 {
