@@ -6,6 +6,15 @@ body  {
   font-size: 12pt;
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
+
+td, th {
+  padding: 10px 0;
+}
+
 footer {
   font-size: .75em;
   color: grey;
