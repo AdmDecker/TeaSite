@@ -4,7 +4,7 @@
     $username = trim($_POST['username']);
     //Check Registercode
     $registerCode = trim($_POST['registerCode']);
-    if ($registerCode != 'puppertea');
+    if (strcmp($registerCode, 'puppertea') != 0);
     {
 		echo 'Incorrect registration code';
 		exit();
