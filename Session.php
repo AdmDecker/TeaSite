@@ -85,7 +85,7 @@ class PupSession {
         PupSession::LoadSession();
         if (isset($_SESSION['username']))
         {
-            return $_SESSION['username']));
+            return $_SESSION['username'];
         }
         else
         {
