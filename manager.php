@@ -2,7 +2,7 @@
     require_once('Session.php');
     require_once('dbaccess.php');
 
-    if (PupSession::getUserID != 'M')
+    if (PupSession::getUserID() != 'M')
         header('/accessDenied.html');
 
     //get all the user data
