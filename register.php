@@ -3,7 +3,7 @@
     $password = $_POST['password'];
     $username = trim($_POST['username']);
     //Check Registercode
-    $registerCode = $_POST['registerCode'];
+    $registerCode = trim($_POST['registerCode']);
     if ($registerCode != 'puppertea');
     {
 		echo 'Incorrect registration code';
@@ -11,29 +11,29 @@
     }
 
 	try {
-	//Create our database object
-	$db = new dbaccess();
+		//Create our database object
+		$db = new dbaccess();
 
-	//Check if the user already exists.
-	$user_inDB = $db->getUserID($username);
-		if (!is_null($user_inDB))
-	{
-	    echo "User already exists";
-	    exit();
-	}
+		//Check if the user already exists.
+		$user_inDB = $db->getUserID($username);
+			if (!is_null($user_inDB))
+		{
+		    echo "User already exists";
+		    exit();
+		}
 
-	//Insert user to database
-	$db->addUser($username, $password, "C");
+		//Insert user to database
+		$db->addUser($username, $password, "C");
 
-	//Get userID
-	$userID = $db->getUserID($username);
+		//Get userID
+		$userID = $db->getUserID($username);
 
-	session_start();
-	$_SESSION['username'] = $username;
-	$_SESSION['timeout'] = time() + 60*60*12;
-	$_SESSION['userID'] = $userID;
-	$_SESSION['userType'] = $db->getUserType($userID);
-	echo "success-register";
+		session_start();
+		$_SESSION['username'] = $username;
+		$_SESSION['timeout'] = time() + 60*60*12;
+		$_SESSION['userID'] = $userID;
+		$_SESSION['userType'] = $db->getUserType($userID);
+		echo "success-register";
 	}
 	catch(PDOException $e)
 	{
