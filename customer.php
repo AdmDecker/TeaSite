@@ -1,7 +1,7 @@
 <?php
     require "Session.php";
     PupSession::LoadSession();
-    $teas = $PupSession::GetTeas();
+    $teas = PupSession::GetTeas();
 ?>
 
 <!DOCTYPE html>
