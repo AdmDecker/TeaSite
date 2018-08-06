@@ -35,7 +35,8 @@
         //like when it receives a response from the server
         xmlhttp.onreadystatechange = stateChange;
         xmlhttp.send('userID=' + userID);
-        document.getElementById('tea' + userID).innerText += 1;
+        let nm = parseInt(document.getElementById('tea' + userID).innerText);
+        document.getElementById('tea' + userID).innerText = nm + 1;
     }
     
     function jsLoad()
