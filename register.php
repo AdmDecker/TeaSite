@@ -5,9 +5,7 @@
     //Check Registercode
     $registerCode = htmlspecialchars(trim($_POST['registerCode']));
     $realCode = 'puppertea';
-    error_log('sent: '.$registerCode);
-    error_log('inplace: '.$realCode);
-    if ($registerCode != $realCode);
+    if ($registerCode != $realCode)
     {
 		echo 'Incorrect registration code';
 		exit();
