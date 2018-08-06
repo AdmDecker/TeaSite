@@ -10,7 +10,10 @@
     $data = $db->getAllUsersByRole('C');
 ?>
 <!DOCTYPE html>
+
 <html>
+    <link href="w3.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
     <script>
     function stateChange()
     {
@@ -38,18 +41,14 @@
         let nm = parseInt(document.getElementById('tea' + userID).innerText);
         document.getElementById('tea' + userID).innerText = nm + 1;
     }
-    
-    function jsLoad()
-    {
-        var myDoc = document;
-    }
 </script>
 
-    <body onload="jsLoad()">
+    <body>
         <table>
             <th>
                 <td>Name</td>
                 <td>Teas</td>
+                <td> </td>
             </th>
             <?php
                 foreach($data as $key=>$user)
