@@ -107,7 +107,7 @@ class PupSession {
         return $db->getUserTeas($userID);
     }
 
-    public static function userCanOrder()
+    public static function canOrder()
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
