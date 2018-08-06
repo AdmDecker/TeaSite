@@ -48,7 +48,7 @@
             <th>
                 <td>Name</td>
                 <td>Teas</td>
-                <td> </td>
+                <td>Button</td>
             </th>
             <?php
                 foreach($data as $key=>$user)
@@ -60,7 +60,7 @@
                         <tr>
                             <td>$name</td>
                             <td id='tea$id'>$teas</td>
-                            <td><button onclick='giveTea($id)'>Give Tea</button</td>
+                            <td height='25' ><button onclick='giveTea($id)'>Give Tea</button></td>
                         </tr>
                         ";
                 }
