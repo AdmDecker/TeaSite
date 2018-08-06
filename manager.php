@@ -1,6 +1,6 @@
 <?php
-    require 'Session.php';
-    require 'dbaccess.php';
+    require_once('Session.php');
+    require_once('dbaccess.php');
 
     if (PupSession::getUserID != 'M')
         header('/accessDenied.html');
