@@ -24,9 +24,9 @@
     </head>
     <body>
         <div class='center'>
-            <h2>Welcome <?php echo PupSession::getUsername() ?>,</h2>
-            <p>You have <?php echo $teas ?> teas</p>
-            <button class='login-input' id='requestTea' onclick="requestTea()">Order Tea</button>
+            <h2 class='center'>Welcome <?php echo PupSession::getUsername() ?>,</h2>
+            <p class='center'>You have <?php echo $teas ?> teas</p>
+            <button class='login-input center' id='requestTea' onclick="requestTea()">Order Tea</button>
         </div>
     </body>
 </html>
