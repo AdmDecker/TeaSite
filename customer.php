@@ -3,6 +3,7 @@
     PupSession::LoadSession();
     PupSession::Validate();
     $teas = PupSession::getTeas();
+    $canOrder = PupSession::canOrder();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
                 xmlhttp.open("POST", action, true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send('requestMessage="My Message"');
+                window.location = '/teaOrdered.html';
             }
         </script>
     </head>
