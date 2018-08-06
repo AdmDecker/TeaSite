@@ -13,7 +13,7 @@
         //Open our http request as POST with our action variable
         xmlhttp.open("POST", action, true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send();
+        xmlhttp.send('requestMessage="My Message"');
     }
 </script>
 <html>
