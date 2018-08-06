@@ -28,19 +28,21 @@
 
     function giveTea(userID)
     {
-        let action = '/givetea.php';
-        xmlhttp = new XMLHttpRequest();
+        return function() {
+            let action = '/givetea.php';
+            xmlhttp = new XMLHttpRequest();
 
-        //Open our http request as POST with our action variable
-        xmlhttp.open("POST", action, true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //Open our http request as POST with our action variable
+            xmlhttp.open("POST", action, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        //Set stateChange() as the onreadystatechange event handler
-        //onreadystatechange is triggered any time the xmlhttp object changes state,
-        //like when it receives a response from the server
-        xmlhttp.onreadystatechange = stateChange(myDoc);
+            //Set stateChange() as the onreadystatechange event handler
+            //onreadystatechange is triggered any time the xmlhttp object changes state,
+            //like when it receives a response from the server
+            xmlhttp.onreadystatechange = stateChange(myDoc);
 
-        xmlhttp.send('userID=' + userID);
+            xmlhttp.send('userID=' + userID);
+       }
     }
     
     function jsLoad()
