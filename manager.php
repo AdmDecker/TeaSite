@@ -45,26 +45,28 @@
 
     <body>
         <table class='center'>
-            <tr>
-                <th>Name</th>
-                <th>Teas</th>
-                <th>Button</th>
-            </tr>
-            <?php
-                foreach($data as $key=>$user)
-                {
-                    $name = $user['userName'];
-                    $teas = $user['teas'];
-                    $id = $user['userID'];
-                    echo "
-                        <tr>
-                            <td>$name</td>
-                            <td id='tea$id'>$teas</td>
-                            <td height='25' ><button onclick='giveTea($id)'>Give Tea</button></td>
-                        </tr>
-                        ";
-                }
-            ?>
+            <tbody class='center'>
+                <tr>
+                    <th>Name</th>
+                    <th>Teas</th>
+                    <th>Button</th>
+                </tr>
+                <?php
+                    foreach($data as $key=>$user)
+                    {
+                        $name = $user['userName'];
+                        $teas = $user['teas'];
+                        $id = $user['userID'];
+                        echo "
+                            <tr>
+                                <td>$name</td>
+                                <td id='tea$id'>$teas</td>
+                                <td height='25' ><button onclick='giveTea($id)'>Give Tea</button></td>
+                            </tr>
+                            ";
+                    }
+                ?>
+            </tbody>
         </table>
     </body>
 </html>
