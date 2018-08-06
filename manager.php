@@ -9,7 +9,7 @@
     $db = new dbAccess();
     $data = $db->getAllUsersByRole('C');
 ?>
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <script>
         function stateChange()
@@ -47,7 +47,7 @@
                 <td>Teas</td>
             </th>
             <?php
-                foreach($user in $data)
+                foreach($data as $key=>$user)
                 {
                     $name = $user['name'];
                     $teas = $user['teas'];
