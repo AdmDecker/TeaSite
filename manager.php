@@ -12,37 +12,30 @@
 <!DOCTYPE html>
 <html>
     <script>
-    function stateChange(myDoc)
+    function stateChange
     {
-        return function (){
-            //Save the server's response in a variable
-            let response = xmlhttp.responseText;
-            //We don't care about these states, so ignore them
-            if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
-                return;
-            myDoc.getElementById('tea' + response.trim()).innerText += 1;
-            console.log('teathing: ' + 'tea' + response);
-            console.log('type: ' + typeof response);
-        }
+        //Save the server's response in a variable
+        let response = xmlhttp.responseText;
+        //We don't care about these states, so ignore them
+        if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
+            return;
     }
 
     function giveTea(userID)
     {
-        return function() {
-            let action = '/givetea.php';
-            xmlhttp = new XMLHttpRequest();
+        let action = '/givetea.php';
+        xmlhttp = new XMLHttpRequest();
 
-            //Open our http request as POST with our action variable
-            xmlhttp.open("POST", action, true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Open our http request as POST with our action variable
+        xmlhttp.open("POST", action, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            //Set stateChange() as the onreadystatechange event handler
-            //onreadystatechange is triggered any time the xmlhttp object changes state,
-            //like when it receives a response from the server
-            xmlhttp.onreadystatechange = stateChange(myDoc);
-
-            xmlhttp.send('userID=' + userID);
-       }
+        //Set stateChange() as the onreadystatechange event handler
+        //onreadystatechange is triggered any time the xmlhttp object changes state,
+        //like when it receives a response from the server
+        xmlhttp.onreadystatechange = stateChange;
+        xmlhttp.send('userID=' + userID);
+        document.getElementById('tea' + userID).innerText += 1;
     }
     
     function jsLoad()
