@@ -12,16 +12,18 @@
 <!DOCTYPE html>
 <html>
     <script>
-    function stateChange()
+    function stateChange(myDoc)
     {
-        //Save the server's response in a variable
-        let response = xmlhttp.responseText;
-        //We don't care about these states, so ignore them
-        if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
-            return;
-        myDoc.getElementById('tea' + response.trim()).value += 1;
-        console.log('teathing: ' + 'tea' + response);
-        console.log('type: ' + typeof response);
+        return function (){
+            //Save the server's response in a variable
+            let response = xmlhttp.responseText;
+            //We don't care about these states, so ignore them
+            if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
+                return;
+            myDoc.getElementById('tea' + response.trim()).value += 1;
+            console.log('teathing: ' + 'tea' + response);
+            console.log('type: ' + typeof response);
+        }
     }
 
     function giveTea(userID)
@@ -36,7 +38,7 @@
         //Set stateChange() as the onreadystatechange event handler
         //onreadystatechange is triggered any time the xmlhttp object changes state,
         //like when it receives a response from the server
-        xmlhttp.onreadystatechange = stateChange;
+        xmlhttp.onreadystatechange = stateChange(myDoc);
 
         xmlhttp.send('userID=' + userID);
     }
