@@ -1,10 +1,8 @@
 <?php
 	require_once('Session.php');
-	if (PupSession::getUserType() != 'C')
-	{
-		echo 'fail';
-		exit();
-	}
+	PupSession::Validate();
+
+	PupSession::OrderTea();
 	
 	$requestMessage = $_POST['requestMessage'];
 	$to = 'adm.decker@gmail.com';

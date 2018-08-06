@@ -27,7 +27,7 @@ class dbAccess
     {
         //Insert user to database
         $username = trim($username);
-        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0)");
+        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0)");
         $statement->bindParam(':username', $username);
         $statement->bindParam(':password', password_hash($password, PASSWORD_DEFAULT));
         $statement->bindParam(':role', $role);
@@ -103,14 +103,38 @@ class dbAccess
         $statement->bindParam(':userID', $userID);
         $statement->execute();
     }
+
+    public function decrementUserTeas($userID)
+    {
+        $statement = $this->dbObject->prepare("UPDATE users set teas=teas-1 WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->execute();
+    }
 	
     public function getUsername($userID)
     {
-	$statement = $this->dbObject->prepare("SELECT userName FROM users WHERE userID=:userID");
+	    $statement = $this->dbObject->prepare("SELECT userName FROM users WHERE userID=:userID");
         $statement->bindParam(':userID', $userID);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
         return $statement->fetch()['userName']; 
+    }
+
+    public function getTimeOfNextOrder($userID)
+    {	
+        $statement = $this->dbObject->prepare("SELECT timeOfNextOrder FROM users WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement->fetch()['timeOfNextOrder'];
+    }
+
+    public function setTimeOfNextOrder($userID, $timeOfNextOrder)
+    {
+        $statement = $this->dbObject->prepare("UPDATE users set timeOfNextOrder=:timeOfNextOrder WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->bindParam(':timeOfNextOrder', $timeOfNextOrder);
+        $statement->execute();
     }
 }
 ?>

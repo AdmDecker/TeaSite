@@ -27,7 +27,14 @@
         <div class='center' style="text-align: center">
             <h2 class='center'>Welcome <?php echo PupSession::getUsername() ?></h2>
             <p class='center'>You have <?php echo $teas ?> teas</p>
-            <button class='login-input center' id='requestTea' onclick="requestTea()">Order Tea</button>
+            <?php
+                if (PupSession::canOrder())
+                    echo "<button class='login-input center' id='requestTea' onclick='requestTea()'>Order Tea</button>"
+                else {
+                    echo "<button class='w3-button w3-disabled'>Order Tea</button>"
+                    echo "<p>You may only order once every 15 minutes</p>"
+                }
+            ?>
         </div>
     </body>
 </html>

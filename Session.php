@@ -106,4 +106,22 @@ class PupSession {
         $db = new dbAccess();
         return $db->getUserTeas($userID);
     }
+
+    public static function userCanOrder()
+    {
+        PupSession::LoadSession();
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        $timeOfNextOrder = $db->getTimeOfNextOrder($userID);
+        return time() > $timeOfNextOrder;
+    }
+
+    public static function orderTea()
+    {
+        PupSession::LoadSession();
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        $db->setTimeOfNextOrder($userID, time() + 60 + 15);
+        $db->decrementUserTeas($userID); 
+    }
 }

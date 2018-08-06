@@ -5,6 +5,7 @@ CREATE TABLE users
 	password VARCHAR(255) NOT NULL,
     role CHAR,
     teas int,
+    timeOfNextOrder int,
 	PRIMARY KEY (userID)
 );
 
