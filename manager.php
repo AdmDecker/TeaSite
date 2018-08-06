@@ -43,7 +43,7 @@
         //We don't care about these states, so ignore them
         if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
             return;
-        document.getElementById('tea' + response).value += 1;
+        document.getElementById('tea' + trim(response)).value += 1;
         console.log('teathing: ' + 'tea' + response);
         console.log('type: ' + typeof response);
     }
