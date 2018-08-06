@@ -122,6 +122,7 @@ class PupSession {
         $userID = PupSession::getUserID();
         $db = new dbAccess();
         $db->setTimeOfNextOrder($userID, time() + 60 + 15);
-        $db->decrementUserTeas($userID); 
+        $db->decrementUserTeas($userID);
+        window.location = '/teaOrdered.html'; 
     }
 }
