@@ -4,6 +4,13 @@
         width: 100%;
         margin: auto;
     }
+    .login-input {
+        width: 95%;
+    }
+}
+
+.login-input {
+    width: 60%;
 }
 
 body  {
