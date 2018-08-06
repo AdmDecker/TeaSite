@@ -20,6 +20,7 @@
             if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
                 return;
             document.getElementById('tea' + response).value += 1;
+            console.log(response);
         }
 
         function giveTea(userID)
