@@ -57,6 +57,7 @@
             //Collect the data and send it
             let username = "username=" + document.getElementById("username").value;
             let password = "password=" + document.getElementById("password").value;
+            let registerCode = "registerCode=" + document.getElementById('registerCode').value;
             xmlhttp.send(username +"&" + password);
         }
         
@@ -85,6 +86,7 @@
       <form onsubmit="return validateForm()">
           <input class ="w3-input center" type="text" name="username" id="username" style="width: 20em" placeholder="Username" /><br/><br/>
           <input class ="w3-input center" type="password" name="password" id="password" style="width: 20em" placeholder="Password" /><br/>
+          <input class ="w3-input center" type="text" name="registerCode" id="registerCode" style="width: 20em" placeholder="Registration Code" /><br/>
           <input class ="w3-button w3-blue center" type="button" value="Login" onClick="onLogin()" style="width: 10em"/>
           <br/>
           <input class ="w3-button w3-blue center" type="button" value="Register" onClick="onRegister()" style="width: 10em"/>
