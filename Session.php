@@ -83,11 +83,8 @@ class PupSession {
     public static function getTeas()
     {
         PupSession::LoadSession();
-        if (isset($_SESSION['teas']))
-        {
-            return $_SESSION['teas'];
-        }
-
-        return NULL;
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        return $db->getUserTeas($userID);
     }
 }
