@@ -107,11 +107,11 @@ class dbAccess
 	
     public function getUsername($userID)
     {
-	$statement = $this->dbObject->prepare("SELECT username FROM users WHERE userID=:userID");
+	$statement = $this->dbObject->prepare("SELECT userName FROM users WHERE userID=:userID");
         $statement->bindParam(':userID', $userID);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetch()['username']; 
+        return $statement->fetch()['userName']; 
     }
 }
 ?>
