@@ -3,7 +3,7 @@
     $password = $_POST['password'];
     $username = trim($_POST['username']);
     //Check Registercode
-    $registerCode = $_POST['registerCode']);
+    $registerCode = $_POST['registerCode'];
     if ($registerCode != 'puppertea');
     {
 		echo 'Incorrect registration code';
