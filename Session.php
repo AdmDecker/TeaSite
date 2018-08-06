@@ -79,6 +79,14 @@ class PupSession {
 
         return NULL;
     }
+    
+    public static function getUsername()
+    {
+        PupSession::LoadSession();
+        $username = PupSession::getUserID();
+        $db = new dbAccess();
+        return $db->getUsername($userID);
+    }
 
     public static function getTeas()
     {
