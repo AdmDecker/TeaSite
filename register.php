@@ -7,7 +7,7 @@
     $realCode = 'puppertea';
     error_log('sent: '.$registerCode);
     error_log('inplace: '.$realCode);
-    if (strcmp($registerCode, $realCode) != 0);
+    if ($registerCode != $realCode);
     {
 		echo 'Incorrect registration code';
 		exit();
