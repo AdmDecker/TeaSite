@@ -3,7 +3,7 @@
     require_once('dbaccess.php');
 
     if (PupSession::getUserID() != 'M')
-        header('/accessDenied.html');
+        header('Location: /accessDenied.html');
 
     //get all the user data
     $db = new dbAccess();
