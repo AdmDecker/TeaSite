@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <script>
-    function stateChange
+    function stateChange()
     {
         //Save the server's response in a variable
         let response = xmlhttp.responseText;
