@@ -9,6 +9,7 @@ body  {
 table {
   border-collapse: separate;
   border-spacing: 50px 0;
+  width: 100%;
 }
 
 td, th {
