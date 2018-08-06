@@ -3,7 +3,7 @@
     $password = $_POST['password'];
     $username = trim($_POST['username']);
     //Check Registercode
-    $registerCode = trim($_POST['registerCode']);
+    $registerCode = htmlspecialchars(trim($_POST['registerCode']));
     $realCode = 'puppertea';
     error_log('sent: '.$registerCode);
     error_log('inplace: '.$realCode);
