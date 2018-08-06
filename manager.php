@@ -11,7 +11,7 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <body>
+    <body onload="jsLoad()">
         <table>
             <th>
                 <td>Name</td>
@@ -65,5 +65,8 @@
         xmlhttp.send('userID=' + userID);
     }
     
-    var myDoc = document;
+    function jsLoad()
+    {
+        var myDoc = document;
+    }
 </script>
