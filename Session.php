@@ -1,5 +1,5 @@
 <?php
-require "dbaccess.php";
+require_once("dbaccess.php");
 
 class PupSession {
     
