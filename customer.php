@@ -25,8 +25,8 @@
     </head>
     <body>
         <div class='center' style="text-align: center">
-            <h2 class='center'>Welcome <?php echo PupSession::getUsername() ?></h2>
-            <p class='center'>You have <?php echo $teas ?> teas</p>
+            <h2 class='center'>Welcome <?php echo PupSession::getUsername(); ?></h2>
+            <p class='center'>You have <?php echo $teas; ?> teas</p>
             <?php
                 if (PupSession::canOrder()) {
                     echo "<button class='login-input center' id='requestTea' onclick='requestTea()'>Order Tea</button>";
