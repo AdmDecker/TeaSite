@@ -1,11 +1,11 @@
 @media only screen and (max-width: 600px) {
     /*Mobile only*/
     body {
-        width: 100%;
-        margin: auto;
+        width: 100% !important;
+        margin: auto !important;
     }
     .login-input {
-        width: 95%;
+        width: 95% !important;
     }
 }
 
