@@ -6,8 +6,7 @@
 
 <!DOCTYPE html>
 <html>
-
-<script type="script/"><?php
-
-
+    <body>
+        <p>You have <?php echo $teas ?> teas</p>
+    </body>
 </html>
