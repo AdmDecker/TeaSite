@@ -11,31 +11,7 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <body onload="jsLoad()">
-        <table>
-            <th>
-                <td>Name</td>
-                <td>Teas</td>
-            </th>
-            <?php
-                foreach($data as $key=>$user)
-                {
-                    $name = $user['userName'];
-                    $teas = $user['teas'];
-                    $id = $user['userID'];
-                    echo "
-                        <tr>
-                            <td>$name</td>
-                            <td id='tea$id'>$teas</td>
-                            <td><button onclick='giveTea($id)'>Give Tea</button</td>
-                        </tr>
-                        ";
-                }
-            ?>
-        </table>
-    </body>
-</html>
-<script>
+    <script>
     function stateChange()
     {
         //Save the server's response in a variable
@@ -70,3 +46,28 @@
         var myDoc = document;
     }
 </script>
+
+    <body onload="jsLoad()">
+        <table>
+            <th>
+                <td>Name</td>
+                <td>Teas</td>
+            </th>
+            <?php
+                foreach($data as $key=>$user)
+                {
+                    $name = $user['userName'];
+                    $teas = $user['teas'];
+                    $id = $user['userID'];
+                    echo "
+                        <tr>
+                            <td>$name</td>
+                            <td id='tea$id'>$teas</td>
+                            <td><button onclick='giveTea($id)'>Give Tea</button</td>
+                        </tr>
+                        ";
+                }
+            ?>
+        </table>
+    </body>
+</html>
