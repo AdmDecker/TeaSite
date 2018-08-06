@@ -49,14 +49,14 @@
             <?php
                 foreach($data as $key=>$user)
                 {
-                    $name = $user['name'];
+                    $name = $user['userName'];
                     $teas = $user['teas'];
                     $id = $user['userID'];
                     echo "
                         <tr>
                             <td>$name</td>
                             <td id='tea$id'>$teas</td>
-                            <td><button onclick='giveTea($id)'/></td>
+                            <td><button onclick='giveTea($id)'>Give Tea</button</td>
                         </tr>
                         ";
                 }
