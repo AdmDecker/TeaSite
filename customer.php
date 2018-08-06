@@ -26,7 +26,7 @@
         <div class='center'>
             <h2>Welcome <?php echo PupSession::getUsername() ?>,</h2>
             <p>You have <?php echo $teas ?> teas</p>
-            <button class='input-login' id='requestTea' onclick="requestTea()">Order Tea</button>
+            <button class='login-input' id='requestTea' onclick="requestTea()">Order Tea</button>
         </div>
     </body>
 </html>
