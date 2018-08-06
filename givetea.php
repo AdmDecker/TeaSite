@@ -7,7 +7,7 @@
         exit();
     }
 
-    $userID = $_POST['userID'];
+    $userID = PupSession::getUserID();
 
     $db = new dbAccess();
     $db->incrementUserTeas($userID);
