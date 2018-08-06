@@ -58,7 +58,7 @@
                             <td id='tea$id'>$teas</td>
                             <td><button onclick='giveTea($id)'/></td>
                         </tr>
-                        "
+                        ";
                 }
             ?>
         </table>
