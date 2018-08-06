@@ -49,7 +49,8 @@ class PupSession {
     
     public static function ReturnToDefault()
     {
-        header('Location: /index.php');
+        header('Location: /login.html');
+        exit();
     }
 
     // Returns user type, or U if no type found.

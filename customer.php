@@ -1,6 +1,7 @@
 <?php
     require "Session.php";
     PupSession::LoadSession();
+    PupSession::Validate();
     $teas = PupSession::getTeas();
 ?>
 
