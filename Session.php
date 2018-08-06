@@ -83,9 +83,19 @@ class PupSession {
     public static function getUsername()
     {
         PupSession::LoadSession();
-        $username = PupSession::getUserID();
-        $db = new dbAccess();
-        return $db->getUsername($userID);
+        if (isset($_SESSION['username']))
+        {
+            return $_SESSION['username']));
+        }
+        else
+        {
+            $username = PupSession::getUserID();
+            $db = new dbAccess();
+            $_SESSION['username'] = $db->getUsername($userID);
+            return $_SESSION['username'];
+        }
+        
+
     }
 
     public static function getTeas()
