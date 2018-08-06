@@ -1,6 +1,6 @@
 <?php
-    require 'dbAccess.php';
-    require 'Session.php';
+    require_once('dbaccess.php');
+    require_once('Session.php');
 
     if (PupSession::getUserType(PupSession::getUserID()) != 'M')
     {
