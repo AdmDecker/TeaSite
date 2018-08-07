@@ -4,7 +4,7 @@
 
 	if(!PupSession::canOrder())
 	{
-		header('orderFailed.html');
+		echo 'fail';
 		exit();
 	}
 
@@ -19,5 +19,5 @@
 	
 	mail($to, $subject, $message, $headers);
 
-
+	echo 'success';
 ?>

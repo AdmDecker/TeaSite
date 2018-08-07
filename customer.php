@@ -18,7 +18,12 @@
                 //We don't care about these states, so ignore them
                 if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
                     return;
-                window.location('/teaOrdered.html');
+                
+                if (xmlhttp.responseText.includes('success'))
+                    window.location('/teaOrdered.html');
+                else if(xmlhttp.responseText.includes('fail'))
+                    window.location('/orderFailed.html');
+                    
             }
 
             function requestTea() {
