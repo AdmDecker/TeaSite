@@ -46,7 +46,7 @@
     <body>
         <table class='center' style='text-align: center'>
             <tbody class='center'>
-                <tr>
+                <tr class='center'>
                     <th>Name</th>
                     <th>Teas</th>
                     <th>Button</th>
