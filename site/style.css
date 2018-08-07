@@ -19,6 +19,7 @@ body {
   display: block;
   margin: auto;
   white-space: nowrap;
+  margin-top: 40px;
 }
 
 .table span {
