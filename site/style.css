@@ -21,6 +21,10 @@ body {
   font-size: 12pt;
 }
 
+.table {
+  width: 60%;
+}
+
 .table div {
   display: block;
   margin: auto;
