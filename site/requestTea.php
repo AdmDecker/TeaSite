@@ -11,10 +11,10 @@
 	PupSession::OrderTea();
 	
 	$requestMessage = $_POST['requestMessage'];
-	$to = 'Pupperteas@gmail.com';
+	$to = 'adm.decker@gmail.com';
 	$subject = 'Tea Order';
 	$orderer = PupSession::getUsername();
-	$message = "<p>$orderer has requested a tea.</p><p>Request:</p><p>$requestMessage</p>";
+	$message = "<html><p>$orderer has requested a tea.</p><p>Request:</p><p>$requestMessage</p></html>";
 	$headers = "From: orders@t.pupperino.net";
 	
 	mail($to, $subject, $message, $headers);
