@@ -30,15 +30,15 @@
         {
             let action = '/givetea.php';
             xmlhttp = new XMLHttpRequest();
+            let amount = document.getElementById('input' + userID);
 
             //Open our http request as POST with our action variable
             xmlhttp.open("POST", action, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             xmlhttp.onreadystatechange = stateChange;
-            xmlhttp.send('userID=' + userID);
-            let nm = parseInt(document.getElementById('tea' + userID).innerText);
-            document.getElementById('tea' + userID).innerText = nm + 1;
+            xmlhttp.send('userID=' + userID + '&' + 'amount=' + amount);
+            document.getElementById('tea' + userID).innerText = amount;
         }
     </script>
     </head>
@@ -65,7 +65,7 @@
                         <div>
                             <span>$name</span>
                             <span id='tea$id'>$teas</span>
-                            <span height='25' ><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Give Tea</button></span>
+                            <span height='25' ><input type='number' id='input$id' min='0' /><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Give Tea</button></span>
                         </div>
                         ";
                 }
