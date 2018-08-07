@@ -9,9 +9,24 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class='center' style='text-align: center'>
-    <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button></div>
-    <h1>Order Failed</h1>
-    <p>Please make sure you have enough teas, have not ordered in the last 15 minutes, and are logged in.</p>
-    <button onclick="window.location = '/customer.php'">Back</button>
+<body>
+    <header class="main-header">
+        <ul class="nav-list">
+            <li class="rides-r-us">
+                <a href="index.php">
+                    <b>Tea</b>
+                </a>
+            </li>
+        </ul>
+        <hr width="100%">
+    </header>
+
+    <div class='center' style='text-align: center'>
+        <div>
+            <button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button>
+        </div>
+        <h1>Order Failed</h1>
+        <p>Please make sure you have enough teas, have not ordered in the last 15 minutes, and are logged in.</p>
+        <button onclick="window.location = '/customer.php'">Back</button>
+    </div>
 </body>

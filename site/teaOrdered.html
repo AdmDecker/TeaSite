@@ -9,10 +9,23 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body >
-    <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button></div>
+<body>
+    <header class="main-header">
+        <ul class="nav-list">
+            <li class="rides-r-us">
+                <a href="index.php">
+                    <b>Tea</b>
+                </a>
+            </li>
+        </ul>
+        <hr width="100%">
+    </header>
+
     <div class='center' style='text-align: center'>
-        <h1>Your tea has been ordered!</h1>
+        <div>
+            <button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button>
+        </div>
+        <h1>Tea Ordered!</h1>
         <p>Please wait 15 minutes before ordering again</p>
         <button onclick="window.location = '/customer.php'">Back</button>
     </div>
