@@ -12,39 +12,37 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
     <link href="w3.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <script>
-    function stateChange()
-    {
-        //Save the server's response in a variable
-        let response = xmlhttp.responseText;
-        //We don't care about these states, so ignore them
-        if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
-            return;
-    }
+        function stateChange()
+        {
+            //Save the server's response in a variable
+            let response = xmlhttp.responseText;
+            //We don't care about these states, so ignore them
+            if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
+                return;
+        }
 
-    function giveTea(userID)
-    {
-        let action = '/givetea.php';
-        xmlhttp = new XMLHttpRequest();
+        function giveTea(userID)
+        {
+            let action = '/givetea.php';
+            xmlhttp = new XMLHttpRequest();
 
-        //Open our http request as POST with our action variable
-        xmlhttp.open("POST", action, true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //Open our http request as POST with our action variable
+            xmlhttp.open("POST", action, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        //Set stateChange() as the onreadystatechange event handler
-        //onreadystatechange is triggered any time the xmlhttp object changes state,
-        //like when it receives a response from the server
-        xmlhttp.onreadystatechange = stateChange;
-        xmlhttp.send('userID=' + userID);
-        let nm = parseInt(document.getElementById('tea' + userID).innerText);
-        document.getElementById('tea' + userID).innerText = nm + 1;
-    }
-</script>
-
+            xmlhttp.onreadystatechange = stateChange;
+            xmlhttp.send('userID=' + userID);
+            let nm = parseInt(document.getElementById('tea' + userID).innerText);
+            document.getElementById('tea' + userID).innerText = nm + 1;
+        }
+    </script>
+    </head>
     <body>
-        <table class='center' style='text-align: center'>
+        <table class='center'>
             <tbody class='center'>
                 <tr class='center'>
                     <th>Name</th>

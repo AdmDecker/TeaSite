@@ -7,7 +7,7 @@ class dbAccess
     private $dbObject = NULL;
     public function __construct()
     {
-        $dbinfo = parse_ini_file('dbconf.ini');
+        $dbinfo = parse_ini_file('../dbconf.ini');
         $hostname = $dbinfo['hostname'];
         $dbname = $dbinfo['db_name'];
         $dbuser = $dbinfo['db_user'];
