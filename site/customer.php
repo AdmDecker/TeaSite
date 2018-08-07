@@ -39,6 +39,12 @@
         </script>
     </head>
     <body>
+        <header class="main-header">
+            <ul class="nav-list">
+                <li class="rides-r-us"><a href="index.php"><b>Tea</b></a></li>
+            </ul>
+            <hr width="100%">
+        </header>
         <div class='center' style="text-align: center">
             <h2 class='center'>Welcome <?php echo PupSession::getUsername(); ?></h2>
             <p class='center'>You have <?php echo $teas; ?> teas</p>
