@@ -61,7 +61,7 @@
                             <tr>
                                 <td>$name</td>
                                 <td id='tea$id'>$teas</td>
-                                <td height='25' ><button onclick='giveTea($id)'>Give Tea</button></td>
+                                <td height='25' ><button class='w3-button' onclick='giveTea($id)'>Give Tea</button></td>
                             </tr>
                             ";
                     }

@@ -44,13 +44,14 @@
             <p class='center'>You have <?php echo $teas; ?> teas</p>
             <?php
                 if (PupSession::canOrder()) {
-                    echo "<button class='login-input center' id='requestTea' onclick='requestTea()'>Order Tea</button>";
+                    echo "<button class='w3-button login-input center' id='requestTea' onclick='requestTea()'>Order Tea</button>";
                 }
                 else {
                     echo "<button class='w3-button w3-disabled'>Order Tea</button>";
                     echo "<p>You may only order once every 15 minutes</p>";
                 }
             ?>
+            <button class="w3-button login-input center" style="padding-top: 50px;" onclick="window.location='/login.html'">Logout</button>
         </div>
     </body>
 </html>
