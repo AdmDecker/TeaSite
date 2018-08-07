@@ -20,9 +20,9 @@
                     return;
                 
                 if (xmlhttp.responseText.includes('success'))
-                    window.location('/teaOrdered.html');
+                    window.location = '/teaOrdered.html';
                 else if(xmlhttp.responseText.includes('fail'))
-                    window.location('/orderFailed.html');
+                    window.location = '/orderFailed.html';
                     
             }
 
