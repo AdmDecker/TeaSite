@@ -50,7 +50,7 @@
             <p class='center'>You have <?php echo $teas; ?> teas</p>
             <?php
                 if (PupSession::canOrder()) {
-                    echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' />";
+                    echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>";
                     echo "<button class='w3-button login-input center w3-blue' id='requestTea' onclick='requestTea()'>Order Tea</button>";
                 }
                 else {
