@@ -42,7 +42,7 @@
     </script>
     </head>
     <body>
-        <div class='center'>
+        <div class='center' style='text-align: center'>
             <div class='center'>
                 <span class='center'><b>Name</b></span>
                 <span class='center'><b>Teas</b></span>
