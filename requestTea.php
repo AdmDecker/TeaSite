@@ -2,6 +2,12 @@
 	require_once('Session.php');
 	PupSession::Validate();
 
+	if(!PupSession::canOrder())
+	{
+		header('orderFailed.html');
+		exit();
+	}
+
 	PupSession::OrderTea();
 	
 	$requestMessage = $_POST['requestMessage'];
