@@ -14,7 +14,7 @@
 	$to = 'adm.decker@gmail.com';
 	$subject = 'Tea Order';
 	$orderer = PupSession::getUsername();
-	$message = "<html><p>$orderer has requested a tea.</p><p>Request:</p><p>$requestMessage</p></html>";
+	$message = "<html><p>$orderer has requested a tea.</p><p>Request Message:</p><p>$requestMessage</p></html>";
 	$headers = "From: orders@t.pupperino.net\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 	
