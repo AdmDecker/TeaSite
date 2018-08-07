@@ -8,8 +8,9 @@
     }
 
     $userID = $_POST['userID'];
+    $amount = $_POST['amount'];    
 
     $db = new dbAccess();
-    $db->incrementUserTeas($userID);
+    $db->setUserTeas($userID, $amount);
     echo "$userID";
 ?>
