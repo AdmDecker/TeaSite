@@ -64,8 +64,8 @@
                     echo "
                         <div>
                             <span>$name</span>
-                            <span id='tea$id'>$teas</span>
-                            <span height='25' ><input type='number' id='input$id' min='0' /><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Give Tea</button></span>
+                            <span id='tea$id'><input class='w3-input w3-blue' type='number' id='input$id' min='0' value='$teas' /></span>
+                            <span height='25' ><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Set Teas</button></span>
                         </div>
                         ";
                 }
