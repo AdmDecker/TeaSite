@@ -28,6 +28,10 @@ body {
   display: inline-block;
 }
 
+.table-button {
+  width: 80%;
+}
+
 footer {
   font-size: 0.75em;
   color: grey;

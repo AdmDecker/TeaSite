@@ -59,7 +59,7 @@
                         <div>
                             <span>$name</span>
                             <span id='tea$id'>$teas</span>
-                            <span height='25' ><button class='w3-button w3-blue' onclick='giveTea($id)'>Give Tea</button></span>
+                            <span height='25' ><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Give Tea</button></span>
                         </div>
                         ";
                 }
