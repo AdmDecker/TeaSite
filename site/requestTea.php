@@ -10,7 +10,7 @@
 
 	PupSession::OrderTea();
 	
-	$requestMessage = $_POST['requestMessage'];
+	$requestMessage = filter_var(trim($_POST['requestMessage']), FILTER_SANITIZE_STRING);
 	$to = 'adm.decker@gmail.com';
 	$subject = 'Tea Order';
 	$orderer = PupSession::getUsername();
