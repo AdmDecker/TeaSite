@@ -30,7 +30,7 @@
         {
             let action = '/givetea.php';
             xmlhttp = new XMLHttpRequest();
-            let amount = document.getElementById('input' + userID);
+            let amount = document.getElementById('input' + userID).value;
 
             //Open our http request as POST with our action variable
             xmlhttp.open("POST", action, true);
