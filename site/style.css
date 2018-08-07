@@ -24,11 +24,13 @@ body {
 .table div {
   display: block;
   margin: auto;
+  white-space: nowrap;
 }
 
 .table span {
   width: 33%;
   margin: auto;
+  display: inline-block;
 }
 
 footer {
