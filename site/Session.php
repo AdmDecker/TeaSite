@@ -111,6 +111,8 @@ class PupSession {
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
+        if (PupSession::getTeas() < 1)
+            return FALSE;
         $db = new dbAccess();
         $timeOfNextOrder = $db->getTimeOfNextOrder($userID);
         return time() > $timeOfNextOrder;
@@ -121,7 +123,7 @@ class PupSession {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
         $db = new dbAccess();
-        $db->setTimeOfNextOrder($userID, time() * 60 * 15);
+        $db->setTimeOfNextOrder($userID, time() + 60 * 15);
         $db->decrementUserTeas($userID);
     }
 }
