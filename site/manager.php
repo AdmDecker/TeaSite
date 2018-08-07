@@ -38,7 +38,7 @@
 
             xmlhttp.onreadystatechange = stateChange;
             xmlhttp.send('userID=' + userID + '&' + 'amount=' + amount);
-            document.getElementById('tea' + userID).innerText = amount;
+            document.getElementById('tea' + userID).value = amount;
         }
     </script>
     </head>
@@ -64,7 +64,7 @@
                     echo "
                         <div>
                             <span>$name</span>
-                            <span id='tea$id'><input class='w3-input w3-blue' type='number' id='input$id' min='0' value='$teas' /></span>
+                            <span id='tea$id'><input class='w3-input w3-border table-button' type='number' id='input$id' min='0' value='$teas' /></span>
                             <span height='25' ><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Set Teas</button></span>
                         </div>
                         ";
