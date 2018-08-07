@@ -52,7 +52,7 @@
                 }
             ?>
             
-            <div><button class="w3-button login-input center" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button></div>
+            <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button></div>
         </div>
     </body>
 </html>
