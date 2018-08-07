@@ -47,7 +47,7 @@
                     echo "<button class='w3-button login-input center w3-blue' id='requestTea' onclick='requestTea()'>Order Tea</button>";
                 }
                 else {
-                    echo "<button class='w3-button w3-blue w3-disabled'>Order Tea</button>";
+                    echo "<button class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
                     echo "<p>You may only order once every 15 minutes</p>";
                 }
             ?>

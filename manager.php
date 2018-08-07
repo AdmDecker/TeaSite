@@ -44,7 +44,7 @@
 </script>
 
     <body>
-        <table class='center'>
+        <table class='center' style='text-align: center'>
             <tbody class='center'>
                 <tr>
                     <th>Name</th>
@@ -58,10 +58,10 @@
                         $teas = $user['teas'];
                         $id = $user['userID'];
                         echo "
-                            <tr>
+                            <tr class='center'>
                                 <td>$name</td>
                                 <td id='tea$id'>$teas</td>
-                                <td height='25' ><button class='w3-button' onclick='giveTea($id)'>Give Tea</button></td>
+                                <td height='25' ><button class='w3-button w3-blue' onclick='giveTea($id)'>Give Tea</button></td>
                             </tr>
                             ";
                     }
