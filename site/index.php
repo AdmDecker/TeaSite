@@ -8,4 +8,8 @@
     {
         header('Location: /customer.php');
     }
+    else
+    {
+        header('Location: /login.html');
+    }
 ?>
