@@ -27,14 +27,14 @@
             }
 
             function requestTea() {
-                document.getElementById('requestTea').enabled = false;
                 let action = '/requestTea.php';
+                let message = document.getElementById('orderMessage').value;
                 xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = stateChange;
                 //Open our http request as POST with our action variable
                 xmlhttp.open("POST", action, true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send('requestMessage="My Message"');
+                xmlhttp.send('requestMessage=' + message);
             }
         </script>
     </head>
