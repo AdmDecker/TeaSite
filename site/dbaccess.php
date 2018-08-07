@@ -97,6 +97,14 @@ class dbAccess
         return $statement->fetch()['teas'];
     }
 
+	public function setUserTeas($userID, $amount)
+    {
+        $statement = $this->dbObject->prepare("UPDATE users SET teas=:amount WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+		$statement->bindParam(':amount', $amount);
+        $statement->execute();
+    }
+	
     public function incrementUserTeas($userID)
     {
         $statement = $this->dbObject->prepare("UPDATE users set teas=teas+1 WHERE userID=:userID");
@@ -136,5 +144,6 @@ class dbAccess
         $statement->bindParam(':timeOfNextOrder', $timeOfNextOrder);
         $statement->execute();
     }
+	
 }
 ?>
