@@ -44,9 +44,9 @@
     <body>
         <div class='center'>
             <div class='center'>
-                <span><b>Name</b></span>
-                <span><b>Teas</b></span>
-                <span><b>Button</b></span>
+                <span class='center'><b>Name</b></span>
+                <span class='center'><b>Teas</b></span>
+                <span class='center'><b>Button</b></span>
             </div>
             <?php
                 foreach($data as $key=>$user)
@@ -56,9 +56,9 @@
                     $id = $user['userID'];
                     echo "
                         <div class='center'>
-                            <span>$name</span>
-                            <span id='tea$id'>$teas</span>
-                            <span height='25' ><button class='w3-button w3-blue' onclick='giveTea($id)'>Give Tea</button></span>
+                            <span class='center'>$name</span>
+                            <span class='center' id='tea$id'>$teas</span>
+                            <span class='center' height='25' ><button class='w3-button w3-blue' onclick='giveTea($id)'>Give Tea</button></span>
                         </div>
                         ";
                 }
