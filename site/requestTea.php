@@ -12,9 +12,9 @@
 	
 	$requestMessage = filter_var(trim($_POST['requestMessage']), FILTER_SANITIZE_STRING);
 	$to = 'adm.decker@gmail.com';
-	$subject = 'Tea Order';
+	$subject = 'Tea Order From $orderer';
 	$orderer = PupSession::getUsername();
-	$message = "<html><p>$orderer has requested a tea.</p><p>Request Message:</p><p>$requestMessage</p></html>";
+	$message = "<html><p>Request Message:</p><p>$requestMessage</p></html>";
 	$headers = "From: orders@t.pupperino.net\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 	
