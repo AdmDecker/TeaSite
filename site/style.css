@@ -23,6 +23,7 @@ body {
 
 .table {
   width: 60%;
+  margin: auto;
 }
 
 .table div {
