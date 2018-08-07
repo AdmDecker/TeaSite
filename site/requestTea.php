@@ -11,7 +11,7 @@
 	PupSession::OrderTea();
 	
 	$requestMessage = $_POST['requestMessage'];
-	$to = 'adm.decker@gmail.com';
+	$to = 'Pupperteas@gmail.com';
 	$subject = 'Tea Order';
 	$orderer = PupSession::getUsername();
 	$message = "<p>$orderer has requested a tea.</p><p>Request:</p><p>$requestMessage</p>";
