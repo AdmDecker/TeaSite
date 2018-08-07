@@ -51,7 +51,8 @@
                     echo "<p>You may only order once every 15 minutes</p>";
                 }
             ?>
-            <button class="w3-button login-input center" style="padding-top: 50px;" onclick="window.location='/login.html'">Logout</button>
+            
+            <div><button class="w3-button login-input center" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button></div>
         </div>
     </body>
 </html>
