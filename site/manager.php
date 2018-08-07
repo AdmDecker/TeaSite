@@ -42,29 +42,27 @@
     </script>
     </head>
     <body>
-        <table class='center'>
-            <tbody class='center'>
-                <tr class='center'>
-                    <th>Name</th>
-                    <th>Teas</th>
-                    <th>Button</th>
-                </tr>
-                <?php
-                    foreach($data as $key=>$user)
-                    {
-                        $name = $user['userName'];
-                        $teas = $user['teas'];
-                        $id = $user['userID'];
-                        echo "
-                            <tr class='center'>
-                                <td>$name</td>
-                                <td id='tea$id'>$teas</td>
-                                <td height='25' ><button class='w3-button w3-blue' onclick='giveTea($id)'>Give Tea</button></td>
-                            </tr>
-                            ";
-                    }
-                ?>
-            </tbody>
-        </table>
+        <div class='center'>
+            <div class='center'>
+                <span><b>Name</b></span>
+                <span><b>Teas</b></span>
+                <span><b>Button</b></span>
+            </div>
+            <?php
+                foreach($data as $key=>$user)
+                {
+                    $name = $user['userName'];
+                    $teas = $user['teas'];
+                    $id = $user['userID'];
+                    echo "
+                        <div class='center'>
+                            <span>$name</span>
+                            <span id='tea$id'>$teas</span>
+                            <span height='25' ><button class='w3-button w3-blue' onclick='giveTea($id)'>Give Tea</button></span>
+                        </div>
+                        ";
+                }
+            ?>
+        </div>
     </body>
 </html>
