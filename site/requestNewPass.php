@@ -14,7 +14,7 @@
 
     if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB))
     {
-        echo 'Old password is incorrect'
+        echo 'Old password is incorrect';
         exit();
     }
 
