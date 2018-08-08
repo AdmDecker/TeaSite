@@ -34,7 +34,7 @@
 
                 xmlhttp.onreadystatechange = stateChange;
                 xmlhttp.send(oldPass + '&' + newPass);
-                document.getElementById("error").innerHTML = "Sending password request...";
+                document.getElementById("passwordRequestError").innerHTML = "Sending password request...";
             }
         </script>
     </head>
