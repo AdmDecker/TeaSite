@@ -42,7 +42,7 @@
         <header class="main-header">
             <ul class="nav-list">
                 <li class="rides-r-us"><a href="index.php"><b>Tea</b></a></li>
-                <li class="rides-r-us"><a href="account.php"><b>Account</b></a></li>
+                <li><a href="account.php"><b>Account</b></a></li>
             </ul>
             <hr width="100%">
         </header>
