@@ -6,26 +6,8 @@ CREATE TABLE users
     role CHAR,
     teas int,
     timeOfNextOrder int,
+	email VARCHAR(80),
 	PRIMARY KEY (userID)
-);
-
-CREATE TABLE customers
-(
-    userID int NOT NULL AUTO_INCREMENT,
-    FOREIGN KEY(userID) REFERENCES users(userID) ON DELETE CASCADE,
-    homeAddress VARCHAR(255),
-    phoneNumber VARCHAR(25),
-    email VARCHAR(50)
-);
-
-CREATE TABLE userInfo
-(
-    userInfoID int NOT NULL AUTO_INCREMENT,
-    user int NOT NULL,
-    FOREIGN KEY (user) REFERENCES users(userID) ON DELETE CASCADE,
-    name VARCHAR(255),
-    email VARCHAR(255),
-    PRIMARY KEY(userInfoID)
 );
 
 /*test data*/
