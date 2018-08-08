@@ -16,9 +16,9 @@
                     return;
                 
                 if (xmlhttp.responseText.includes('success'))
-                    window.location = '/teaOrdered.html';
-                else if(xmlhttp.responseText.includes('fail'))
-                    window.location = '/orderFailed.html';
+                    document.getElementById('passwordRequestError').innerText = 'Password change successful'
+                else
+                    document.getElementById('passwordRequestError').innerText = htmlhttp.responseText;
                     
             }
 
