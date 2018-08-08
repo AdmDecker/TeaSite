@@ -11,7 +11,7 @@
 
     //Check old password is match
     //Fetch password for user from DB
-    $passwd_inDB = $db->getPassword($userID);
+    $passwd_inDB = $db->getPassword($username);
 
     if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB))
     {
