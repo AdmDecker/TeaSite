@@ -1,7 +1,6 @@
 <?php 
     require_once('Session.php');
     PupSession::Validate();
-    exit();
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,3 +57,4 @@
         </div>
     </body>
 </html>
+<?php exit() ?>
