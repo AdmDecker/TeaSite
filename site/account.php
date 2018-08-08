@@ -16,9 +16,9 @@
                     return;
                 
                 if (xmlhttp.responseText.includes('success'))
-                    document.getElementById('passwordRequestError').innerText = 'Password change successful'
+                    document.getElementById('passwordRequestError').nodeValue = 'Password change successful'
                 else
-                    document.getElementById('passwordRequestError').innerText = htmlhttp.responseText;
+                    document.getElementById('passwordRequestError').nodeValue = htmlhttp.responseText;
                     
             }
 
