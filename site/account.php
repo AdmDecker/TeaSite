@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width" />
         <link href="w3.css" rel="stylesheet" type="text/css">
         <link href="style.css" rel="stylesheet" type="text/css">
-        <script>
+        <script type="text/javascript">
             function stateChange()
             {
                 //We don't care about these states, so ignore them
@@ -32,6 +32,7 @@
                 xmlhttp.open("POST", action, true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send(oldPass + '&' + newPass);
+                document.getElementById("error").innerHTML = "Sending password request...";
             }
         </script>
     </head>
