@@ -27,10 +27,12 @@
                 let oldPass = 'oldPass=' + document.getElementById('oldPass').value;
                 let newPass = 'newPass=' + document.getElementById('newPass').value;
                 xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = stateChange;
+                
                 //Open our http request as POST with our action variable
                 xmlhttp.open("POST", action, true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                xmlhttp.onreadystatechange = stateChange;
                 xmlhttp.send(oldPass + '&' + newPass);
                 document.getElementById("error").innerHTML = "Sending password request...";
             }
