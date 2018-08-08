@@ -22,4 +22,5 @@
     $db->setPassword($userID, $newPass);
 
     echo 'success';
+    exit();
 ?>
