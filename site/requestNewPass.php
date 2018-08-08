@@ -1,12 +1,13 @@
 <?php
     require_once('Session.php');
-    require_once('dbAccess.php');
+    require_once('dbaccess.php');
 
     PupSession::Validate();
     $newPass = $_POST['newPass'];
     $oldPass = $_POST['oldPass'];
     $username = PupSession::getUsername();
     $userID = PupSession::getUserID();
+    $db = new dbAccess();
 
     //Check old password is match
     //Fetch password for user from DB
