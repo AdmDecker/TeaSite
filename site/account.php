@@ -46,7 +46,7 @@
         
         <div>
             <h3 style='margin-bottom: 0'>Password</h3>
-            <hr width="80%" style='margin-top: 0'>
+            <hr width="80%" style='margin-top: 0'><br />
             <input type='text' placeholder='Old Password' id='oldPass' /><br />
             <input type='text' placeholder='New Password' id='newPass' /><br />
             <button class='w3-button w3-blue' onclick='submitPasswordRequest()'>Set Password</button><br />
