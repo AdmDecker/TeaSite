@@ -1,11 +1,7 @@
-<?php
-    require "Session.php";
-    PupSession::LoadSession();
+<?php 
+    require_once('Session.php');
     PupSession::Validate();
-    $teas = PupSession::getTeas();
-    $canOrder = PupSession::canOrder();
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,15 +22,16 @@
                     
             }
 
-            function requestTea() {
-                let action = '/requestTea.php';
-                let message = document.getElementById('orderMessage').value;
+            function submitPasswordRequest() {
+                let action = '/requestNewPass.php';
+                let oldPass = 'oldPass=' + document.getElementById('oldPass').value;
+                let newPass = 'newPass=' + document.getElementById('newPass').value;
                 xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = stateChange;
                 //Open our http request as POST with our action variable
                 xmlhttp.open("POST", action, true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send('requestMessage=' + message);
+                xmlhttp.send(oldPass + '&' + newPass);
             }
         </script>
     </head>
@@ -46,21 +43,14 @@
             </ul>
             <hr width="100%">
         </header>
-        <div class='center' style="text-align: center">
-            <h2 class='center'>Welcome <?php echo PupSession::getUsername(); ?></h2>
-            <p class='center'>You have <?php echo $teas; ?> teas</p>
-            <?php
-                if (PupSession::canOrder()) {
-                    echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>";
-                    echo "<button class='w3-button login-input center w3-blue' id='requestTea' onclick='requestTea()'>Order Tea</button>";
-                }
-                else {
-                    echo "<button class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
-                    echo "<p>You may only order once every 15 minutes</p>";
-                }
-            ?>
-            
-            <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/login.html'">Logout</button></div>
+        
+        <div>
+            <h3>Password</h3>
+            <hr width="80%">
+            <input type='text' placeholder='Old Password' id='oldPass' />
+            <input type='text' placeholder='New Password' id='newPass' />
+            <button class='w3-button w3-blue' onclick='submitPasswordRequest()'>Set Password</button>
+            <label id="passwordRequestError"></label>
         </div>
     </body>
 </html>
