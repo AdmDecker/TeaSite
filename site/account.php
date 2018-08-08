@@ -39,17 +39,17 @@
         <header class="main-header">
             <ul class="nav-list">
                 <li class="rides-r-us"><a href="index.php"><b>Tea</b></a></li>
-                <li class="rides-r-us"><a href="account.php"><b>Account</b></a></li>
+                <li><a href="account.php"><b>Account</b></a></li>
             </ul>
             <hr width="100%">
         </header>
         
         <div>
-            <h3>Password</h3>
-            <hr width="80%">
-            <input type='text' placeholder='Old Password' id='oldPass' />
-            <input type='text' placeholder='New Password' id='newPass' />
-            <button class='w3-button w3-blue' onclick='submitPasswordRequest()'>Set Password</button>
+            <h3 style='margin-bottom: 0'>Password</h3>
+            <hr width="80%" style='margin-top: 0'>
+            <input type='text' placeholder='Old Password' id='oldPass' /><br />
+            <input type='text' placeholder='New Password' id='newPass' /><br />
+            <button class='w3-button w3-blue' onclick='submitPasswordRequest()'>Set Password</button><br />
             <label id="passwordRequestError"></label>
         </div>
     </body>
