@@ -8,6 +8,8 @@
     $username = PupSession::getUsername();
     $userID = PupSession::getUserID();
 
+    echo $section;
+
     if ($section == 'password')
     {
         $newPass = $_POST['newPass'];
@@ -23,7 +25,6 @@
         }
 
         $db->setPassword($userID, $newPass);
-        echo 'password';
     }
     else if ($section == 'notification')
     {
@@ -35,7 +36,6 @@
             echo 'notification error: '.$e->getMessage();
             exit();
         }
-        echo 'notification success';
     }
     else if ($section == 'username')
     {
@@ -52,7 +52,6 @@
         }
 
         PupSession::setUsername($newUsername);
-        echo 'username success';
     }
 
     echo 'success';

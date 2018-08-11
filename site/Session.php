@@ -103,7 +103,14 @@ class PupSession {
         PupSession::Validate();
         $userID = PupSession::getUserID();
         $db = new dbAccess();
-        $db->setUsername($userID, $newUsername);
+        try {
+            $db->setUsername($userID, $newUsername);
+        }
+        catch(Exception $e) { 
+            echo 'notification error: '.$e->getMessage();
+            exit();
+        }
+        
         $_SESSION['username'] = $newUsername;
     }
 
