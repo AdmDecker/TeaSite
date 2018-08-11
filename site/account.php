@@ -80,7 +80,7 @@
             <h3 style='margin-bottom: 0'>Notifications</h3>
             <hr width="80%" style='margin-top: 0'><br />
             <input class='w3-input' type='email' placeholder='Email Address' id='email' /><br /><br />
-            <input class='w3-check' type='checkbox' /><label>Enable Notifications</label>
+            <input class='w3-check' type='checkbox' /><label>Enable Notifications</label><br /><br />
             <button class='w3-button w3-blue' onclick='saveNotification()'>Save Notification Settings</button><br /><br />
             <div id="notificationError"></div>
         </div>
