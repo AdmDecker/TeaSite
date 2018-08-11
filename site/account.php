@@ -29,7 +29,7 @@
                     messageTarget.innerHTML = 'Password change successful';
                 else
                     messageTarget.innerHTML = response;
-                    
+                console.log('response received: ' + response);
             }
 
             function submitForm(formSection) {
