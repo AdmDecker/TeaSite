@@ -85,6 +85,7 @@
             </ul>
             <hr width="100%">
         </header>
+        <h2 class='center'>Account Settings for <?php echo PupSession::getUsername(); ?></h2><br />
         <div>
             <h3 style='margin-bottom: 0'>Username</h3>
             <hr width="80%" style='margin-top: 0'><br />
