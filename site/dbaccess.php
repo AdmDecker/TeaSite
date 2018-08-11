@@ -43,12 +43,11 @@ class dbAccess
         return $statement->fetchAll();
     }
     
-    public function getPassword($username)
+    public function getPassword($userID)
     {
         $statement = $this->dbObject->prepare("select password from users 
-            where userName = :username");
-		$username = trim($username);
-		$statement->bindParam(':username', $username);;
+            where userID = :userID");
+		$statement->bindParam(':userID', $userID);;
 		$statement->execute();
 		$statement->setFetchMode(PDO::FETCH_ASSOC);
 		$passwd_inDB = $statement->fetch();

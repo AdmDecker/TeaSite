@@ -17,7 +17,7 @@
 
         //Check old password is match
         //Fetch password for user from DB
-        $passwd_inDB = $db->getPassword($username);
+        $passwd_inDB = $db->getPassword($userID);
 
         if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB)) {
             echo 'password error: Old password is incorrect';
@@ -44,9 +44,9 @@
         
         //Check old password is match
         //Fetch password for user from DB
-        $passwd_inDB = $db->getPassword($username);
+        $passwd_inDB = $db->getPassword($userID);
 
-        if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB)) {
+        if (is_null($passwd_inDB) || !password_verify($password, $passwd_inDB)) {
             echo 'username error: password is incorrect';
             exit();
         }
