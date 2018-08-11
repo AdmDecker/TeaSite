@@ -31,6 +31,7 @@
                     messageTarget.innerHTML = 'Server error - please contact Adam with this message: ' + response;
                 else
                     messageTarget.innerHTML = response;
+                console.log('RX: ' + response);
             }
 
             function submitForm(formSection) {
