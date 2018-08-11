@@ -20,7 +20,7 @@
 
                 if(response.includes('notification'))
                     messageTarget = document.getElementById('notificationError');
-                else if(xmlhttp.responseText.includes('password'))
+                else if(response.includes('password'))
                     messageTarget = document.getElementById('passwordRequestError');
                 else if(response.includes('username'))
                     messageTarget = document.getElementById('usernameRequestError');
@@ -30,7 +30,7 @@
                 else if (response.includes('failure'))
                     messageTarget.innerHTML = 'Server error - please contact Adam with this message: ' + response;
                 else
-                    console.log('response received: ' + response);
+                    messageTarget.innerHTML = response;
             }
 
             function submitForm(formSection) {
