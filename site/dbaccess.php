@@ -27,7 +27,7 @@ class dbAccess
     {
         //Insert user to database
         $username = trim($username);
-        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, NULL)");
+        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0, NULL)");
         $statement->bindParam(':username', $username);
         $statement->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
         $statement->bindParam(':role', $role);
