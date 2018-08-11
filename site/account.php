@@ -27,9 +27,10 @@
 
                 if (xmlhttp.responseText.includes('success'))
                     messageTarget.innerHTML = 'Saved changes successfully!';
+                else if (response.includes('failure'))
+                    messageTarget.innerHTML = 'Server error - please contact Adam with this message: ' + response;
                 else
-                    messageTarget.innerHTML = response;
-                console.log('response received: ' + response);
+                    console.log('response received: ' + response);
             }
 
             function submitForm(formSection) {
@@ -50,7 +51,7 @@
                 else if (formSection === 'username') {
                     let newUsername = 'newUsername=' + document.getElementById('newUsername');
                     let password = 'password=' + document.getElementById('password');
-                    submitData += newUsername + '&' + password;
+                    submitData += '&' + newUsername + '&' + password;
                     document.getElementById('usernameRequestError').innerHTML = 'Sending username request...';
                 }
                 else return;

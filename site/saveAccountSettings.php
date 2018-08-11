@@ -53,6 +53,10 @@
 
         PupSession::setUsername($newUsername);
     }
+    else {
+        echo 'invalid form failure';
+        exit();
+    }
 
     echo 'success';
     exit();
