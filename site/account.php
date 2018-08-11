@@ -15,12 +15,20 @@
                 if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
                     return;
                 
-                if (xmlhttp.responseText.includes('success'))
-                    document.getElementById('passwordRequestError').innerHTML = 'Password change successful';
-                else if(xmlhttp.responseText.includes('notification'))
-                    document.getElementById('notificationError').innerHTML = xmlhttp.responseText;
+                let response = xmlhttp.responseText;
+                let messageTarget = '';
+
+                if(response.includes('notification'))
+                    messageTarget = document.getElementById('notificationError');
                 else if(xmlhttp.responseText.includes('password'))
-                    document.getElementById('passwordRequestError').innerHTML = xmlhttp.responseText;
+                    messageTarget = document.getElementById('passwordRequestError');
+                else if(response.includes('username'))
+                    messageTarget = document.getElementById('usernameRequestError');
+
+                if (xmlhttp.responseText.includes('success'))
+                    messageTarget.innerHTML = 'Password change successful';
+                else
+                    messageTarget.innerHTML = response;
                     
             }
 
@@ -39,6 +47,13 @@
                     submitData += '&' + email;
                     document.getElementById("notificationError").innerHTML = "Submitting notification settings...";
                 }
+                else if (formSection === 'username') {
+                    let newUsername = 'newUsername=' + document.getElementById('newUsername');
+                    let password = 'password=' + document.getElementById('password');
+                    submitData += newUsername + '&' + password;
+                    document.getElementById('usernameRequestError').innerHTML = 'Sending username request...';
+                }
+                else return;
                 
                 xmlhttp = new XMLHttpRequest();
                 //Open our http request as POST with our action variable
@@ -56,6 +71,10 @@
             function savePassword() {
                 submitForm('password');
             }
+
+            function saveUsername() {
+                submitForm('username');
+            }
         </script>
     </head>
     <body>
@@ -66,7 +85,15 @@
             </ul>
             <hr width="100%">
         </header>
-        
+        <div>
+            <h3 style='margin-bottom: 0'>Username</h3>
+            <hr width="80%" style='margin-top: 0'><br />
+            <input class='w3-input' type='text' placeholder='New Username' id='newUsername' /><br /><br />
+            <input class='w3-input' type='password' placeholder='Password' id='password' /><br /><br />
+            <button class='w3-button w3-blue' onclick='saveUsername()'>Set Username</button><br /><br />
+            <div id="usernameRequestError"></div>
+        </div>
+        <br /><br />
         <div>
             <h3 style='margin-bottom: 0'>Password</h3>
             <hr width="80%" style='margin-top: 0'><br />

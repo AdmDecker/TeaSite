@@ -18,7 +18,7 @@
         $passwd_inDB = $db->getPassword($username);
 
         if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB)) {
-            echo 'Old password is incorrect';
+            echo 'password error: Old password is incorrect';
             exit();
         }
 
@@ -35,7 +35,24 @@
             echo 'notification error: '.$e->getMessage();
             exit();
         }
-        echo 'notification';
+        echo 'notification success';
+    }
+    else if ($section == 'username')
+    {
+        $newUsername = $_POST['newUsername'];
+        $password = $_POST['password'];
+        
+        //Check old password is match
+        //Fetch password for user from DB
+        $passwd_inDB = $db->getPassword($username);
+
+        if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB)) {
+            echo 'username error: password is incorrect';
+            exit();
+        }
+
+        PupSession::setUsername($newUsername);
+        echo 'username success';
     }
 
     echo 'success';

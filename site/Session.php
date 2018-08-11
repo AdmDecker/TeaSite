@@ -95,8 +95,16 @@ class PupSession {
             $_SESSION['username'] = $db->getUsername($userID);
             return $_SESSION['username'];
         }
-        
+    }
 
+    public static function setUsername($newUsername)
+    {
+        PupSession::LoadSession();
+        PupSession::Validate();
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        $db->setUsername($userID, $newUsername);
+        $_SESSION['username'] = $newUsername;
     }
 
     public static function getTeas()

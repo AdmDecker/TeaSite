@@ -128,6 +128,14 @@ class dbAccess
         return $statement->fetch()['userName']; 
     }
 
+    public function setUsername($userID, $newUsername)
+    {
+        $statement = $this->dbObject->prepare("UPDATE users set userName=:newUsername WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->bindParam(':newUsername', $newUsername);
+        $statement->execute();
+    }
+
     public function getTimeOfNextOrder($userID)
     {	
         $statement = $this->dbObject->prepare("SELECT timeOfNextOrder FROM users WHERE userID=:userID");
