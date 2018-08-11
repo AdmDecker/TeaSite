@@ -44,18 +44,18 @@
                     let oldPass = 'oldPass=' + document.getElementById('oldPass').value;
                     let newPass = 'newPass=' + document.getElementById('newPass').value;
                     submitData += '&' + oldPass + '&' + newPass;
-                    document.getElementById("passwordRequestError").innerHTML = "Sending password request...";
+                    document.getElementById("passwordRequestError").innerHTML = "Saving password settings...";
                 }
                 else if (formSection === 'notification') {
                     let email = 'email=' + document.getElementById('email');
                     submitData += '&' + email;
-                    document.getElementById("notificationError").innerHTML = "Submitting notification settings...";
+                    document.getElementById("notificationError").innerHTML = "Saving notification settings...";
                 }
                 else if (formSection === 'username') {
                     let newUsername = 'newUsername=' + document.getElementById('newUsername');
                     let password = 'password=' + document.getElementById('password');
                     submitData += '&' + newUsername + '&' + password;
-                    document.getElementById('usernameRequestError').innerHTML = 'Sending username request...';
+                    document.getElementById('usernameRequestError').innerHTML = 'Saving username settings...';
                 }
                 else return;
                 
