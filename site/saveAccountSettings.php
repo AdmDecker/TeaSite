@@ -8,7 +8,7 @@
     $username = PupSession::getUsername();
     $userID = PupSession::getUserID();
 
-    echo $section;
+    echo "$section";
 
     if ($section == 'password')
     {

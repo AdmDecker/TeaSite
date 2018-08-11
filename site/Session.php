@@ -100,7 +100,6 @@ class PupSession {
     public static function setUsername($newUsername)
     {
         PupSession::LoadSession();
-        PupSession::Validate();
         $userID = PupSession::getUserID();
         $db = new dbAccess();
         try {
