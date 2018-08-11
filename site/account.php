@@ -26,7 +26,7 @@
                     messageTarget = document.getElementById('usernameRequestError');
 
                 if (xmlhttp.responseText.includes('success'))
-                    messageTarget.innerHTML = 'Password change successful';
+                    messageTarget.innerHTML = 'Saved changes successfully!';
                 else
                     messageTarget.innerHTML = response;
                 console.log('response received: ' + response);
