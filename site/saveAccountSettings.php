@@ -33,7 +33,7 @@
             $db->setEmailAddress($userID);
         } 
         catch(Exception $e) { 
-            echo 'notification error: '.$e->getMessage();
+            echo ' error: '.$e->getMessage();
             exit();
         }
     }
@@ -47,7 +47,7 @@
         $passwd_inDB = $db->getPassword($userID);
 
         if (is_null($passwd_inDB) || !password_verify($password, $passwd_inDB)) {
-            echo 'username error: password is incorrect';
+            echo ' error: password is incorrect';
             exit();
         }
 

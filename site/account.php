@@ -12,18 +12,20 @@
             function stateChange()
             {
                 //We don't care about these states, so ignore them
-                if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
+                if (xmlhttp.readyState==4 || xmlhttp.status==200)
                     return;
                 
                 let response = xmlhttp.responseText;
-                let messageTarget = '';
+                let messageTarget;
 
                 if(response.includes('notification'))
                     messageTarget = document.getElementById('notificationError');
                 else if(response.includes('password'))
                     messageTarget = document.getElementById('passwordRequestError');
                 else if(response.includes('username'))
-                    messageTarget = document.getElementById('usernameRequestError');
+                    messageTarget = document.getElementById('usernameRequestError'); 
+                else
+                    console.log('Error: No messageTarget');
 
                 if (xmlhttp.responseText.includes('success'))
                     messageTarget.innerHTML = 'Saved changes successfully!';
