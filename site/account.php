@@ -116,6 +116,8 @@
             <button class='w3-button w3-blue' onclick='saveNotification()'>Save Notification Settings</button><br /><br />
             <div id="notificationError"></div>
         </div>
+        <br /><br />
+        <button onclick="window.location = '/index.php'">Back</button>
     </body>
 </html>
 <?php exit() ?>

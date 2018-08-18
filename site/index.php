@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <?php
     // includes
     require 'Session.php';
-    if (PupSession::getUserType() == 'M')
+    $userType = $PupSession::getUserType();
+    if ($userType === 'M')
         header('Location: /manager.php');
-    else if (PupSession::getUserType() == 'C')
+    else if ($userType === 'C')
     {
         header('Location: /customer.php');
     }
