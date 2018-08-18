@@ -1,7 +1,7 @@
 <?php
     // includes
     require 'Session.php';
-    $userType = $PupSession::getUserType();
+    $userType = PupSession::getUserType();
     if ($userType === 'M')
         header('Location: /manager.php');
     else if ($userType === 'C')
