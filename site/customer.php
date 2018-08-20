@@ -61,9 +61,9 @@
             ?>
             <br /><br />
             <h3 class='center'>Gift Teas</h3>
-            <span>
-                <input type='text' id='giftRecipient' class='w3-input center login-input' placeholder='Gift Recipient' /><br />
-                <input type='number' id='giftAmount' class='w3-input center login-input' value='0' min='0' /><br />
+            <span class='login-input'>
+                <input type='text' id='giftRecipient' class='w3-input center' style='width: 80%' placeholder='Gift Recipient' /><br />
+                <input type='number' id='giftAmount' class='w3-input center' value='0' min='0' style='width: 20%'/><br />
             </span>
             <button class='w3-button login-input center w3-blue' onclick='giftTeas()'>Gift Teas</button><br />
             <label id='giftError'></label>
