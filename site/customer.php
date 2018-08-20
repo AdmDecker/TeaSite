@@ -59,6 +59,13 @@
                     echo "<p>You may only order once every 15 minutes</p>";
                 }
             ?>
+            <br /><br />
+            <h2 class='center'>Gift Teas</h2>
+            <input type='text' id='giftRecipient' class='w3-input center login-input' placeholder='Gift Recipient' />
+            <input type='number' id='giftAmount' class='w3-input center login-input' value='0' min='0' />
+            <button class='w3-button login-input center w3-blue' onclick='giftTeas()'>Gift Teas</button>
+            <br />
+            <label id='giftError'></label>
             
             <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
         </div>
