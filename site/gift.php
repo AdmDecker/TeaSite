@@ -1,6 +1,9 @@
 <?php
     require_once('Session.php');
     require_once('dbaccess.php');
+    require_once('error.php');
+
+    $e = new Error('gift');
     
     PupSession::Validate();
     
@@ -14,17 +17,17 @@
     
     if(!isset($recipientID))
     {
-        echo 'error: Recipient username does not exist';
+        echo $e->Error('Recipient username does not exist');
         exit();
     }
     else if($recipientID === $userID)
     {
-        echo 'error: You cannot gift yourself teas! >:(';
+        echo $e->Error('You cannot gift yourself teas! >:(');
         exit();
     }
     else if ($giftAmount > $teas)
     {
-        echo 'error: You don't have enough teas to gift that many!';
+        echo $e->Error('You don\'t have enough teas to gift that many!');
         exit();
     }
     
@@ -35,5 +38,5 @@
     $db->setUserTeas($recipientID, $recipientTeas + $giftAmount);
     
     //success!
-    echo "Successfully gifted $giftAmount teas to $recipient";
+    echo $e->Success("Successfully gifted $giftAmount teas to $recipient");
 ?>
