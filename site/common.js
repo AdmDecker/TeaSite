@@ -41,15 +41,19 @@ function asyncSend(action, form, dataObject, successCallback, failCallback, debu
     xmlhttp[form].open("POST", action, true);
     xmlhttp[form].setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     dataObject.form = form;
+    let jsonData = JSON.stringify(dataObject);
     
     try {
-        xmlhttp[form].send(JSON.stringify(dataObject));
+        xmlhttp[form].send(jsonData);
     }
     catch {
         console.log('Send failure (DATA NOT JSON ENCODABLE)');
         console.log(dataObject);
         return;
-    }   
+    }
+
+    if (debug)
+        console.log('TX: ' + jsonData);
 }
 
 function getInputValue(id) {
