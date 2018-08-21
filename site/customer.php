@@ -31,7 +31,7 @@
                     debug);
             }
             
-            function giftTea() {
+            function giftTeas() {
                 let form = 'gift';
                 
                 let dataObject = {
