@@ -25,10 +25,11 @@
 
         private static function Build($action, $message, $redirectLocation)
         {
-            $json = new Array();
-            $json['form'] = $this->form;
-            $json['action'] = $action;
-
+            $json = [
+                'form' => $this->form,
+                'action' => $action
+            ];
+            
             if ($message !== NULL)
                 $json['message'] = $message;
             
