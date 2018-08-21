@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width" />
         <link href="w3.css" rel="stylesheet" type="text/css">
         <link href="style.css" rel="stylesheet" type="text/css">
-        <script src='stateChange.js'>
+        <script src='common.js'>
             debug = true;
             
             function requestTea() {
