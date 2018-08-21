@@ -33,7 +33,7 @@
     }
     else if ($giftAmount < 1)
     {
-        exit($e->Error('You have to gift at least 1 tea!');
+        exit( $e->Error('You have to gift at least 1 tea!') );
     }
     
     //Take teas from gifter
