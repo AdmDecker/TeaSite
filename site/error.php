@@ -34,7 +34,7 @@
                 $json['message'] = $message;
             
             if ($redirectLocation !== NULL)
-                $json['location'] = $redirectLocation
+                $json['location'] = $redirectLocation;
 
             return json_encode($json);
         }
