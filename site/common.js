@@ -6,16 +6,17 @@ function stateChange(form, successCallback, failCallback, debug = false) {
         
         debug = true;
         let response = '';
+        let responseText = xmlhttp[form].responseText;
         try {
-            response = JSON.parse(xmlhttp[form].responseText);
+            response = JSON.parse(responseText);
         }
         catch {
-            console.log('Server error (NOT JSON): ' + xmlhttp[form].responseText);
+            console.log('Server error (NOT JSON): ' + responseText);
             return;
         }
         
         if (debug) {
-            console.log('RX: ' + response);
+            console.log('RX: ' + responseText);
         }
         
         const action = response.action;
