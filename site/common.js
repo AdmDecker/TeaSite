@@ -4,6 +4,7 @@ function stateChange(successCallback, failCallback, debug = false) {
         if (!(xmlhttp.readyState==4 && xmlhttp.status==200))
             return;
         
+        debug = true;
         let response = '';
         try {
             response = JSON.parse(xmlhttp.responseText);
