@@ -64,7 +64,7 @@ function getInputValue(id) {
 }
 
 function displayError(formId, errorMessage) {
-    document.getElementById(formId + Error).innerHTML = errorMessage;
+    document.getElementById(formId + 'Error').innerHTML = errorMessage;
 }
 
 xmlhttp = [];
