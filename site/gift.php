@@ -1,7 +1,7 @@
 <?php
     require_once('Session.php');
     require_once('dbaccess.php');
-    require_once('Error.php');
+    require_once('error.php');
 
     $e = new Error('gift');
     
