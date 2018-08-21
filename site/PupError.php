@@ -1,6 +1,6 @@
 <?php
     
-    class Error
+    class PupError
     {
         private $form = '';
         public function __construct($form)
