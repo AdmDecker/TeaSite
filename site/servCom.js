@@ -28,3 +28,24 @@ function stateChange(successCallback, failCallback, debug = false) {
         }
     }
 }
+
+function asyncSend(action, form, dataObject, successCallback, failCallback, debug = false) {
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = stateChange(
+        successCallback,
+        failCallback,
+        debug);
+    //Open our http request as POST with our action variable
+    xmlhttp.open("POST", action, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    let jsonData = {};
+    
+    try {
+        xmlhttp.send(json.encode(jsonData));
+    }
+    catch {
+        console.log('Send failure (DATA NOT JSON ENCODABLE): ' + dataObject);
+        return;
+    }
+    
+}
