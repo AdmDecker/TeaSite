@@ -1,15 +1,20 @@
 <?php
 	require_once('Session.php');
-	require_once('Error.php');
+	require_once('PupError.php');
 
 	PupSession::Validate();
+
+	$POST = json_decode(file_get_contents('php://input'), true);
+
+	$e = new PupError($POST['form']);
+
 	if(!PupSession::canOrder())
 	{
 		echo $e->Error('You can\'t order right now!');
 		exit();
 	}
 	
-	$POST = json_decode(file_get_contents('php://input'), true);
+	
 	$storeEmail = 'Pupperteas@gmail.com';
 	$itemOrdered = 'Tea';
 
