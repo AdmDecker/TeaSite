@@ -30,6 +30,26 @@
                     function () { window.location = '/orderFailed.html'; }),
                     debug);
             }
+            
+            function giftTea() {
+                let form = 'gift';
+                
+                let dataObject = {
+                    giftRecipient: getInputValue('giftRecipient'),
+                    giftAmount: getInputValue('giftAmount'),
+                };
+                
+                const callBack = function (message) { displayError( form, message); };
+                
+                asyncSend(
+                    '/gift.php',
+                    form,
+                    dataObject,
+                    callBack,
+                    callBack,
+                    debug
+                );
+            }
         </script>
     </head>
     <body>
