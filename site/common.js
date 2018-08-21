@@ -6,7 +6,7 @@ function stateChange(successCallback, failCallback, debug = false) {
         
         let response = '';
         try {
-            response = json.decode(xmlhttp.responseText);
+            response = json.parse(xmlhttp.responseText);
         }
         catch {
             console.log('Server error (NOT JSON): ' + xmlhttp.responseText);
@@ -43,10 +43,11 @@ function asyncSend(action, form, dataObject, successCallback, failCallback, debu
     dataObject.form = form;
     
     try {
-        xmlhttp[form].send(json.encode(dataObject));
+        xmlhttp[form].send(json.stringify(dataObject));
     }
     catch {
-        console.log('Send failure (DATA NOT JSON ENCODABLE): ' + dataObject);
+        console.log('Send failure (DATA NOT JSON ENCODABLE)');
+        console.log(dataObject);
         return;
     }   
 }
