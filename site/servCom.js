@@ -21,10 +21,10 @@ function stateChange(successCallback, failCallback, debug = false) {
         if (response.action === 'redirect')
             window.location = response.location;
         else if(response.action === 'error') {
-            successCallback(response.message);
+            failCallback(form, response.message);
         }
         else if(response.action === 'success') {
-            failCallback(response.message);
+            successCallback(form, response.message);
         }
     }
 }
