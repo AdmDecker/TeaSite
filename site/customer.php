@@ -12,11 +12,24 @@
         <meta name="viewport" content="width=device-width" />
         <link href="w3.css" rel="stylesheet" type="text/css">
         <link href="style.css" rel="stylesheet" type="text/css">
+        <script src='jquery.js'></script>
         <script src='common.js'></script>
         <script>
             debug = true;
+
+            function toggleOrdering(enable) {
+                if (enable) {
+                    $('#requestTea').removeClass('w3-disabled');
+                    $('#minutesMessage').addClass('hidden');
+                }
+                else {
+                    $('#requestTea').addClass('w3-disabled');
+                    $('#minutesMessage').removeClass('hidden');
+                }
+            }
             
             function requestTea() {
+                
                 let dataObject = {};
                 dataObject.requestMessage = document.getElementById('orderMessage').value;
                 
@@ -27,7 +40,7 @@
                     action,
                     form,
                     dataObject,
-                    function () { window.location = '/teaOrdered.html'; },
+                    function () {  },
                     function () { window.location = '/orderFailed.html'; },
                     debug);
             }
@@ -65,15 +78,11 @@
             <h2 class='center'>Welcome <?php echo PupSession::getUsername(); ?></h2>
             <p class='center'>You have <?php echo $teas; ?> teas</p>
             <?php
-                if (PupSession::canOrder()) {
-                    echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>";
-                    echo "<button class='w3-button login-input center w3-blue' id='requestTea' onclick='requestTea()'>Order Tea</button>";
-                }
-                else {
-                    echo "<button class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
-                    echo "<p>You may only order once every 15 minutes</p>";
-                }
+                echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>";
+                echo "<button class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
+                echo "<p id='minutesMessage'>You may only order once every 15 minutes</p>";
             ?>
+            <label class='error' id='requestTeaError'></label>
             <br /><br />
             <h3 class='center'>Gift Teas</h3>
             <span class='login-input center'>
@@ -81,7 +90,7 @@
                 <input type='number' id='giftAmount' class='w3-input' value='0' min='0' style='width: 20%; display: inline-block'/>
             </span><br />
             <button class='w3-button login-input center w3-blue' onclick='giftTeas()'>Gift Teas</button><br />
-            <label id='giftError'></label>
+            <label class='error' id='giftError'></label>
             
             <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
         </div>
