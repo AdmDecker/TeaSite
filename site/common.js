@@ -1,7 +1,7 @@
 function stateChange(successCallback, failCallback, debug = false) {
     return function () {
         //We don't care about these states, so ignore them
-        if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
+        if (xmlhttp.readyState==4 || xmlhttp.status==200)
             return;
         
         let response = '';
