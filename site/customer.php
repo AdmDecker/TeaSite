@@ -27,8 +27,8 @@
                     action,
                     form,
                     dataObject,
-                    function () { window.location = '/teaOrdered.html'; }),
-                    function () { window.location = '/orderFailed.html'; }),
+                    function () { window.location = '/teaOrdered.html'; },
+                    function () { window.location = '/orderFailed.html'; },
                     debug);
             }
             
