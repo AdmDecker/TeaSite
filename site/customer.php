@@ -12,29 +12,23 @@
         <meta name="viewport" content="width=device-width" />
         <link href="w3.css" rel="stylesheet" type="text/css">
         <link href="style.css" rel="stylesheet" type="text/css">
-        <script>
-            function stateChange()
-            {
-                //We don't care about these states, so ignore them
-                if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
-                    return;
-                
-                if (xmlhttp.responseText.includes('success'))
-                    window.location = '/teaOrdered.html';
-                else if(xmlhttp.responseText.includes('fail'))
-                    window.location = '/orderFailed.html';
-                    
-            }
-
+        <script src='stateChange.js'>
+            debug = true;
+            
             function requestTea() {
+                let dataObject = {};
+                dataObject.requestMessage = document.getElementById('orderMessage').value;
+                
                 let action = '/requestTea.php';
-                let message = document.getElementById('orderMessage').value;
-                xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = stateChange;
-                //Open our http request as POST with our action variable
-                xmlhttp.open("POST", action, true);
-                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send('requestMessage=' + message);
+                let form = 'requestTea';
+                
+                asyncSend(
+                    action,
+                    form,
+                    dataObject,
+                    function () { window.location = '/teaOrdered.html'; }),
+                    function () { window.location = '/orderFailed.html'; }),
+                    debug);
             }
         </script>
     </head>
