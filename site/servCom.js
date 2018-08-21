@@ -1,5 +1,9 @@
 function stateChange(successCallback, failCallback, debug = false) {
     return function () {
+        //We don't care about these states, so ignore them
+        if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
+            return;
+        
         let response = '';
         try {
             response = json.decode(xmlhttp.responseText);
@@ -13,39 +17,38 @@ function stateChange(successCallback, failCallback, debug = false) {
             console.log('RX: ' + response);
         }
         
-        //Form variable is REQUIRED
-        const form = response.form;
         const action = response.action;
     
         //Handle each action
         if (response.action === 'redirect')
             window.location = response.location;
         else if(response.action === 'error') {
-            failCallback(form, response.message);
+            failCallback(response.message);
         }
         else if(response.action === 'success') {
-            successCallback(form, response.message);
+            successCallback(response.message);
         }
     }
 }
 
 function asyncSend(action, form, dataObject, successCallback, failCallback, debug = false) {
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = stateChange(
+    xmlhttp[form] = new XMLHttpRequest();
+    xmlhttp[form].onreadystatechange = stateChange(
         successCallback,
         failCallback,
         debug);
     //Open our http request as POST with our action variable
-    xmlhttp.open("POST", action, true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    let jsonData = {};
+    xmlhttp[form].open("POST", action, true);
+    xmlhttp[form].setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    dataObject.form = form;
     
     try {
-        xmlhttp.send(json.encode(jsonData));
+        xmlhttp[form].send(json.encode(dataObject));
     }
     catch {
         console.log('Send failure (DATA NOT JSON ENCODABLE): ' + dataObject);
         return;
-    }
-    
+    }   
 }
+
+xmlhttp = [];
