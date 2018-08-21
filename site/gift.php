@@ -1,9 +1,9 @@
 <?php
     require_once('Session.php');
     require_once('dbaccess.php');
-    require_once('error.php');
+    require_once('PupError.php');
 
-    $e = new Error('gift');
+    $e = new PupError('gift');
     
     PupSession::Validate();
     $POST = json_decode(file_get_contents('php://input'), true);
