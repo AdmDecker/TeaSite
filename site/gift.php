@@ -6,9 +6,10 @@
     $e = new Error('gift');
     
     PupSession::Validate();
+    $POST = json_decode(file_get_contents('php://input'), true);
     
-    $recipient = $_POST['giftRecipient'];
-    $giftAmount = $_POST['giftAmount'];
+    $recipient = $POST['giftRecipient'];
+    $giftAmount = $POST['giftAmount'];
     $userID = PupSession::getUserID();
     $teas = PupSession::getTeas();
     
