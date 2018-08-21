@@ -51,4 +51,8 @@ function asyncSend(action, form, dataObject, successCallback, failCallback, debu
     }   
 }
 
+function getInputValue(id) {
+    return document.getElementById(id).value;
+}
+
 xmlhttp = [];
