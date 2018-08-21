@@ -31,6 +31,10 @@
         echo $e->Error('You don\'t have enough teas to gift that many!');
         exit();
     }
+    else if ($giftAmount < 1)
+    {
+        exit($e->Error('You have to gift at least 1 tea!');
+    }
     
     //Take teas from gifter
     $db->setUserTeas($userID, $teas - $giftAmount);
