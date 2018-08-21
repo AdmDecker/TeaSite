@@ -55,4 +55,8 @@ function getInputValue(id) {
     return document.getElementById(id).value;
 }
 
+function displayError(formId, errorMessage) {
+    document.getElementById(formId + Error).innerHTML = errorMessage;
+}
+
 xmlhttp = [];
