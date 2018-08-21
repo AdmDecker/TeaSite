@@ -10,20 +10,20 @@
 
         public function Error($message)
         {
-            return Error::Build('error', $message, NULL);
+            return $this->Build('error', $message, NULL);
         }
 
-        public static function Redirect($location)
+        public function Redirect($location)
         {
-            return Error::Build('redirect', NULL, $location);
+            return $this->Build('redirect', NULL, $location);
         }
 
-        public static function Success($message = '')
+        public function Success($message = '')
         {
-            return Error::Build('success', $message, NULL);
+            return $this->Build('success', $message, NULL);
         }
 
-        private static function Build($action, $message, $redirectLocation)
+        private function Build($action, $message, $redirectLocation)
         {
             $json = [
                 'form' => $this->form,
