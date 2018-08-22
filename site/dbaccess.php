@@ -152,5 +152,21 @@ class dbAccess
         $statement->execute();
     }
 	
+	public function setEmailAddress($userID, $email)
+    {
+        $statement = $this->dbObject->prepare("UPDATE users set email=:email WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->bindParam(':email', $email);
+        $statement->execute();
+    }
+    
+    public function getEmailAddress($userID)
+    {
+        $statement = $this->dbObject->prepare("SELECT email FROM users WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement->fetch()['email'];
+    }
 }
 ?>
