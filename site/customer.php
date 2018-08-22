@@ -30,8 +30,6 @@
                 displayError('teasCounter', 'You have ' + teas + ' teas');
                 if (teas <= 0)
                     toggleOrdering(false);
-                else
-                    toggleOrdering(true);
             }
             
             function requestTea() {
@@ -125,6 +123,7 @@
     </body>
     <script>
         teas = <?php echo $teas ?>;
+        toggleOrdering(true);
         updateTeasCounter(teas);
     </script>
 </html>
