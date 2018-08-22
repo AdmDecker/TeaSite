@@ -154,22 +154,22 @@ class dbAccess
 
     public function setEmail($userID, $email)
     {
-        setUserField($userID, 'email', $email);    
+        $this->setUserField($userID, 'email', $email);    
     }
     
     public function getEmail($userID)
     {
-        return getUserField($userID, 'email');
+        return $this->getUserField($userID, 'email');
     }
 	
     public function getEmailEnabled($userID)
     {
-        return getUserField($userID, 'emailEnabled');
+        return $this->getUserField($userID, 'emailEnabled');
     }
     
     public function setEmailEnabled($userID, $enabled)
     {
-        setUserField($userID, 'emailEnabled', $enabled);
+        $this->setUserField($userID, 'emailEnabled', $enabled);
     }
     
     private function setUserField($userID, $fieldName, $newValue)
