@@ -1,63 +1,61 @@
 <?php
     require_once('Session.php');
     require_once('dbaccess.php');
+    require_once('PupError.php');
 
     PupSession::Validate();
-    $section = $_POST['form'];
+
+    $POST = json_decode(file_get_contents('php://input'), true);
+    $section = $POST['form'];
     $db = new dbAccess();
     $username = PupSession::getUsername();
     $userID = PupSession::getUserID();
 
-    echo "$section";
+    $e = new PupError($section);
 
-    if ($section == 'password')
+    if ($section === 'password')
     {
-        $newPass = $_POST['newPass'];
-        $oldPass = $_POST['oldPass'];
+        $newPass = $POST['newPass'];
+        $oldPass = $POST['oldPass'];
 
         //Check old password is match
         //Fetch password for user from DB
         $passwd_inDB = $db->getPassword($userID);
 
-        if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB)) {
-            echo 'password error: Old password is incorrect';
-            exit();
+        if (is_null($passwd_inDB) || !password_verify($oldPass, $passwd_inDB)) { 
+            exit( $e->Error('password error: Old password is incorrect') );
         }
 
         $db->setPassword($userID, $newPass);
     }
     else if ($section == 'notification')
     {
-        $email = $_POST['email'];
+        $email = $POST['email'];
         try {
             $db->setEmailAddress($userID);
         } 
-        catch(Exception $e) { 
-            echo ' error: '.$e->getMessage();
-            exit();
+        catch(Exception $ex) { 
+            exit( $e->Error('Database Error: '.$ex->getMessage() );
         }
     }
     else if ($section == 'username')
     {
-        $newUsername = $_POST['newUsername'];
-        $password = $_POST['password'];
+        $newUsername = $POST['newUsername'];
+        $password = $POST['password'];
         
         //Check old password is match
         //Fetch password for user from DB
         $passwd_inDB = $db->getPassword($userID);
 
         if (is_null($passwd_inDB) || !password_verify($password, $passwd_inDB)) {
-            echo ' error: password is incorrect';
-            exit();
+            exit( $e->Error( 'Error: Password is incorrect' ) );
         }
 
         PupSession::setUsername($newUsername);
     }
     else {
-        echo 'invalid form failure';
-        exit();
+        exit( $e->Error('Site failure: Invalid form submission') );
     }
 
-    echo 'success';
-    exit();
+    exit( $e->Success( "Successfully saved $form settings" ) );
 ?>
