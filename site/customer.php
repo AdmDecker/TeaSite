@@ -105,7 +105,7 @@
             <p class='center' id='teasCounterError'></p>
             <input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>
             <button id='requestTea' onclick='requestTea()' class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>
-            <label id='requestTeaError'></label>
+            <br /><label id='requestTeaError'></label>
             <label class='error' id='requestTeaError'></label>
             <br /><br />
             <h3 class='center'>Gift Teas</h3>
