@@ -25,6 +25,7 @@
                 else if (form === 'notification') {
                     dataObject = {
                         'email': getInputValue('email'),
+                        'emailEnabled': getCheckboxValue('emailEnabled'),
                     }
                     displayError( form, 'Saving notification settings...' );
                 }
@@ -96,7 +97,7 @@
             <input class='w3-input' type='email' placeholder='Email Address' id='email' value=
                    <?php echo '\''.PupSession::getEmail().'\''; ?>
             /><br />
-            <input class='w3-check' type='checkbox' value=
+            <input id='emailEnabled' class='w3-check' type='checkbox' checked=
                    <?php echo PupSession::getEmailEnabled() ?>
             /><label>Enable Notifications</label><br /><br />
             <button class='w3-button w3-blue' onclick='saveNotification()'>Save Notification Settings</button><br /><br />
