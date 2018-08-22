@@ -30,9 +30,11 @@
     }
     else if ($form == 'notification')
     {
-        $email = $POST['email'];
         try {
+            $email = $POST['email'];
+            $emailEnabled = $POST['emailEnabled'];
             $db->setEmail($userID, $email);
+            $db->setEmailEnabled($userID, $emailEnabled);
         } 
         catch(Exception $ex) { 
             exit( $e->Error('Database Error: '.$ex->getMessage()) );
