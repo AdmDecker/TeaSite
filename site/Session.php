@@ -1,5 +1,5 @@
 <?php
-require_once("dbaccess.php");
+require_once('dbaccess.php');
 
 class PupSession {
     
@@ -139,5 +139,13 @@ class PupSession {
         $db = new dbAccess();
         $db->setTimeOfNextOrder($userID, time() + 60 * 15);
         $db->decrementUserTeas($userID);
+    }
+    
+    public static function getEmail()
+    {
+        PupSession::LoadSession();
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        return $db->getEmail($userID);
     }
 }
