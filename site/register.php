@@ -43,7 +43,7 @@
 	}
 	catch(PDOException $ex)
 	{
-		exit( $e->Error( "Database error: " . $ex->getMessage() );
+		exit( $e->Error("Database error: " . $ex->getMessage()) );
 	}
 
 ?>
