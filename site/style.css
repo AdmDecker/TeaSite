@@ -138,6 +138,10 @@ button {
   margin-right: auto;
 }
 
+.center-text {
+  text-align: center;
+}
+
 .right {
   float: right;
 }
