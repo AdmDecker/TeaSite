@@ -1,10 +1,9 @@
-function stateChange(form, successCallback, failCallback, debug = false) {
+function stateChange(form, successCallback, failCallback) {
     return function () {
         //We don't care about these states, so ignore them
         if (!(xmlhttp[form].readyState==4 && xmlhttp[form].status==200))
             return;
         
-        debug = true;
         let response = '';
         let responseText = xmlhttp[form].responseText;
         try {
@@ -33,13 +32,13 @@ function stateChange(form, successCallback, failCallback, debug = false) {
     }
 }
 
-function asyncSend(action, form, dataObject, successCallback, failCallback, debug = false) {
+function asyncSend(action, form, dataObject, successCallback, failCallback) {
     xmlhttp[form] = new XMLHttpRequest();
     xmlhttp[form].onreadystatechange = stateChange(
         form,
         successCallback,
-        failCallback,
-        debug);
+        failCallback
+    );
     //Open our http request as POST with our action variable
     xmlhttp[form].open("POST", action, true);
     xmlhttp[form].setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -68,3 +67,4 @@ function displayError(formId, errorMessage) {
 }
 
 xmlhttp = [];
+debug = true;
