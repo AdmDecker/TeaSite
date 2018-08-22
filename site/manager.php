@@ -64,9 +64,9 @@
                     $id = $user['userID'];
                     echo "
                         <div>
-                            <span class='center'>$name</span>
-                            <span id='tea$id' class='center'><input class='w3-input w3-border table-button' type='number' id='input$id' min='0' value='$teas' /></span>
-                            <span height='25' class='center'><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Set Teas</button></span>
+                            <span class='vcenter'>$name</span>
+                            <span id='tea$id' class='vcenter'><input class='w3-input w3-border table-button' type='number' id='input$id' min='0' value='$teas' /></span>
+                            <span height='25' class='vcenter'><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Set Teas</button></span>
                         </div>
                         ";
                 }
