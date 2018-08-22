@@ -82,7 +82,7 @@
             <p class='center'>You have <?php echo $teas; ?> teas</p>
             <?php
                 echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>";
-                echo "<button class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
+                echo "<button id='requestTea' class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
                 echo "<p id='minutesMessage'>You may only order once every 15 minutes</p>";
             ?>
             <label class='error' id='requestTeaError'></label>
