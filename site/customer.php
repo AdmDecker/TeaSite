@@ -118,6 +118,7 @@
             
             <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
         </div>
+        <br /><br /><br /><br />
     </body>
     <script>
         teas = <?php echo $teas ?>;
