@@ -1,5 +1,6 @@
 <?php
 require_once('dbaccess.php');
+require_once('PupError.php');
 
 class PupSession {
     
@@ -49,8 +50,10 @@ class PupSession {
     
     public static function ReturnToDefault()
     {
-        header('Location: /login.html');
-        exit();
+        header('Location: /login.html');\
+            
+        $e = new PupError('');
+        exit($e->Redirect('/index.php'));
     }
 
     // Returns user type, or U if no type found.
