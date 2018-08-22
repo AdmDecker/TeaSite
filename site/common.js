@@ -62,6 +62,10 @@ function getInputValue(id) {
     return document.getElementById(id).value;
 }
 
+function getCheckboxValue(id) {
+    return document.getElementById(id).checked;
+}
+
 function displayError(formId, errorMessage) {
     document.getElementById(formId + 'Error').innerHTML = errorMessage;
 }
