@@ -35,6 +35,7 @@
             }
             
             function requestTea() {
+                if (teas <= 0) return;
                 
                 let dataObject = {
                     'requestMessage': getInputValue('orderMessage'),
