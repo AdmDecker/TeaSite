@@ -93,8 +93,12 @@
         <div>
             <h3 style='margin-bottom: 0'>Notifications</h3>
             <hr width="80%" style='margin-top: 0'><br />
-            <input class='w3-input' type='email' placeholder='Email Address' id='email' /><br />
-            <input class='w3-check' type='checkbox' /><label>Enable Notifications</label><br /><br />
+            <input class='w3-input' type='email' placeholder='Email Address' id='email' value=
+                   <?php echo PupSession::getEmail(); ?>
+            /><br />
+            <input class='w3-check' type='checkbox' value=
+                   <?php echo PupSession::getEmailEnabled() ?>
+            /><label>Enable Notifications</label><br /><br />
             <button class='w3-button w3-blue' onclick='saveNotification()'>Save Notification Settings</button><br /><br />
             <div id="notificationError"></div>
         </div>
