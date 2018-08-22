@@ -102,8 +102,8 @@
         <div class='center' style="text-align: center">
             <h2 class='center'>Welcome <?php echo PupSession::getUsername(); ?></h2>
             <p class='center' id='teasCounterError'></p>
-            <input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>"
-            <button id='requestTea' onclick='requestTea()' class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>"
+            <input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>
+            <button id='requestTea' onclick='requestTea()' class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>
             <label id='requestTeaError'></label>
             <label class='error' id='requestTeaError'></label>
             <br /><br />
