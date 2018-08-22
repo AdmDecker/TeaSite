@@ -2,5 +2,5 @@
     require_once('Session.php');
 
     PupSession::Destroy();
-    header('/index.php');
+    header('Location: /index.php');
 ?>

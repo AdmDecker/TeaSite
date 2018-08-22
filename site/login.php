@@ -1,7 +1,12 @@
 <?php
-    require 'dbaccess.php';
-    $password = $_POST['password'];
-    $username = $_POST['username'];
+    require_once('dbaccess.php');
+	require_once('PupError.php');
+
+	$e = new PupError('login');
+
+	$POST = json_decode(file_get_contents('php://input'), true);
+    $password = $POST['password'];
+    $username = $POST['username'];
 
 	try 
     {   
@@ -9,10 +14,8 @@
         
         //Verify username exists
         $userID = $db->getUserID($username);
-        if (is_null($userID))
-        {
-            echo "Login Failed: User does not exist.";
-            exit();
+        if (is_null($userID)) {
+            exit( $e->Error('Login Failed: User does not exist') );
         }
 		
         //Fetch password for user from DB
@@ -26,14 +29,14 @@
             $_SESSION['username'] = $username;
             $_SESSION['userID'] = $userID;
             $_SESSION['userType'] = $db->getUserType($userID);
-            echo "success";
+            echo $e->Redirect('index.php');
         }	
 		else
-			echo "Login Failed: Username and password do not match.";				
+			echo $e->Error( 'Login Failed: Username and password do not match' );				
 	}
 	catch(PDOException $e)
 	{
-		echo "Database error: " . $e->getMessage();
+		echo $e->Error( 'Database error: ' . $e->getMessage() );
 	}
     exit();
 ?>

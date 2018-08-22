@@ -27,7 +27,7 @@ class dbAccess
     {
         //Insert user to database
         $username = trim($username);
-        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0, NULL)");
+        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0, NULL, 0)");
         $statement->bindParam(':username', $username);
         $statement->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
         $statement->bindParam(':role', $role);
@@ -150,6 +150,47 @@ class dbAccess
         $statement->bindParam(':userID', $userID);
         $statement->bindParam(':timeOfNextOrder', $timeOfNextOrder);
         $statement->execute();
+    }
+
+    public function setEmail($userID, $email)
+    {
+        $this->setUserField($userID, 'email', $email);    
+    }
+    
+    public function getEmail($userID)
+    {
+        return $this->getUserField($userID, 'email');
+    }
+	
+    public function getEmailEnabled($userID)
+    {
+        return $this->getUserField($userID, 'emailEnabled');
+    }
+    
+    public function setEmailEnabled($userID, $enabled)
+    {
+        $this->setUserField($userID, 'emailEnabled', $enabled);
+    }
+    
+    private function setUserField($userID, $fieldName, $newValue)
+    {
+        $statement = $this->dbObject->prepare("UPDATE users set $fieldName=:newValue WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->bindParam(':newValue', $newValue);
+        $statement->execute();
+    }
+    
+    private function getUserField($userID, $fieldName)
+    {
+        $statement = $this->dbObject->prepare("SELECT $fieldName FROM users WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $statement->fetch();
+        if (!empty($row))
+            return $row[$fieldName];
+        else
+            return NULL;
     }
 	
 }

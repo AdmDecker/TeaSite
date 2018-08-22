@@ -1,5 +1,6 @@
 <?php
-require_once("dbaccess.php");
+require_once('dbaccess.php');
+require_once('PupError.php');
 
 class PupSession {
     
@@ -50,7 +51,9 @@ class PupSession {
     public static function ReturnToDefault()
     {
         header('Location: /login.html');
-        exit();
+            
+        $e = new PupError('');
+        exit($e->Redirect('/index.php'));
     }
 
     // Returns user type, or U if no type found.
@@ -139,5 +142,21 @@ class PupSession {
         $db = new dbAccess();
         $db->setTimeOfNextOrder($userID, time() + 60 * 15);
         $db->decrementUserTeas($userID);
+    }
+    
+    public static function getEmail()
+    {
+        PupSession::LoadSession();
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        return $db->getEmail($userID);
+    }
+    
+    public static function getEmailEnabled()
+    {
+        PupSession::LoadSession();
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        return $db->getEmailEnabled($userID);
     }
 }

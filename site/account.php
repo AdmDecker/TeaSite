@@ -8,64 +8,47 @@
         <meta name="viewport" content="width=device-width" />
         <link href="w3.css" rel="stylesheet" type="text/css">
         <link href="style.css" rel="stylesheet" type="text/css">
+        <script src='common.js'></script>
         <script type="text/javascript">
-            function stateChange()
-            {
-                //We don't care about these states, so ignore them
-                if (xmlhttp.readyState==4 || xmlhttp.status==200)
-                    return;
+            function submitForm(form) {
+                const action = '/saveAccountSettings.php';
                 
-                let response = xmlhttp.responseText;
-                let messageTarget;
-
-                if(response.includes('notification'))
-                    messageTarget = document.getElementById('notificationError');
-                else if(response.includes('password'))
-                    messageTarget = document.getElementById('passwordRequestError');
-                else if(response.includes('username'))
-                    messageTarget = document.getElementById('usernameRequestError'); 
-                else
-                    console.log('Error: No messageTarget');
-
-                if (xmlhttp.responseText.includes('success'))
-                    messageTarget.innerHTML = 'Saved changes successfully!';
-                else if (response.includes('failure'))
-                    messageTarget.innerHTML = 'Server error - please contact Adam with this message: ' + response;
-                else
-                    messageTarget.innerHTML = response;
-                console.log('RX: ' + response);
-            }
-
-            function submitForm(formSection) {
-                let action = '/saveAccountSettings.php';
-                let submitData = 'form=' + formSection;
+                let dataObject = {};
                 
-                if (formSection === 'password') {
-                    let oldPass = 'oldPass=' + document.getElementById('oldPass').value;
-                    let newPass = 'newPass=' + document.getElementById('newPass').value;
-                    submitData += '&' + oldPass + '&' + newPass;
-                    document.getElementById("passwordRequestError").innerHTML = "Saving password settings...";
+                if (form === 'password') {
+                    dataObject = {
+                        'oldPass': getInputValue('oldPass'),
+                        'newPass': getInputValue('newPass'),
+                    }
+                    displayError( form, 'Saving password settings...' );
                 }
-                else if (formSection === 'notification') {
-                    let email = 'email=' + document.getElementById('email');
-                    submitData += '&' + email;
-                    document.getElementById("notificationError").innerHTML = "Saving notification settings...";
+                else if (form === 'notification') {
+                    dataObject = {
+                        'email': getInputValue('email'),
+                        'emailEnabled': getCheckboxValue('emailEnabled'),
+                    }
+                    displayError( form, 'Saving notification settings...' );
                 }
-                else if (formSection === 'username') {
-                    let newUsername = 'newUsername=' + document.getElementById('newUsername');
-                    let password = 'password=' + document.getElementById('password');
-                    submitData += '&' + newUsername + '&' + password;
-                    document.getElementById('usernameRequestError').innerHTML = 'Saving username settings...';
+                else if (form === 'username') {
+                    dataObject = {
+                        'newUsername': getInputValue('newUsername'),
+                        'password': getInputValue('password'),
+                    }
+                    displayError( form, 'Saving username settings...' );
                 }
                 else return;
                 
-                xmlhttp = new XMLHttpRequest();
-                //Open our http request as POST with our action variable
-                xmlhttp.open("POST", action, true);
-                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-                xmlhttp.onreadystatechange = stateChange;
-                xmlhttp.send(submitData);
+                const callBack = function (message) {
+                    displayError( form, message );
+                };
+                
+                asyncSend(
+                    action,
+                    form,
+                    dataObject,
+                    callBack,
+                    callBack
+                )
             }
             
             function saveNotification() {
@@ -96,7 +79,7 @@
             <input class='w3-input' type='text' placeholder='New Username' id='newUsername' /><br /><br />
             <input class='w3-input' type='password' placeholder='Password' id='password' /><br /><br />
             <button class='w3-button w3-blue' onclick='saveUsername()'>Set Username</button><br /><br />
-            <div id="usernameRequestError"></div>
+            <div id="usernameError"></div>
         </div>
         <br /><br />
         <div>
@@ -105,19 +88,28 @@
             <input class='w3-input' type='password' placeholder='Old Password' id='oldPass' /><br /><br />
             <input class='w3-input' type='password' placeholder='New Password' id='newPass' /><br /><br />
             <button class='w3-button w3-blue' onclick='savePassword()'>Set Password</button><br /><br />
-            <div id="passwordRequestError"></div>
+            <div id="passwordError"></div>
         </div>
         <br /><br />
         <div>
             <h3 style='margin-bottom: 0'>Notifications</h3>
             <hr width="80%" style='margin-top: 0'><br />
-            <input class='w3-input' type='email' placeholder='Email Address' id='email' /><br />
-            <input class='w3-check' type='checkbox' /><label>Enable Notifications</label><br /><br />
+            <input class='w3-input' type='email' placeholder='Email Address' id='email' value=
+                   <?php echo '\''.PupSession::getEmail().'\''; ?>
+            /><br />
+            <input id='emailEnabled' class='w3-check' type='checkbox'
+                   <?php
+                       if (PupSession::getEmailEnabled())
+                           echo 'checked';
+                   ?>
+            /><label>Enable Notifications</label><br /><br />
             <button class='w3-button w3-blue' onclick='saveNotification()'>Save Notification Settings</button><br /><br />
             <div id="notificationError"></div>
         </div>
         <br /><br />
         <button onclick="window.location = '/index.php'">Back</button>
+
+        <br /><br /><br /><br />
     </body>
 </html>
 <?php exit() ?>
