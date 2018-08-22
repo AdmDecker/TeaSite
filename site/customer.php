@@ -86,7 +86,6 @@
                     dataObject,
                     successCallBack(giftAmount),
                     callBack,
-                    debug
                 );
             }
         </script>
@@ -120,6 +119,6 @@
     </body>
     <script>
         teas = <?php echo $teas ?>;
-        toggleOrdering(teas > 0);
+        updateTeasCounter(teas);
     </script>
 </html>
