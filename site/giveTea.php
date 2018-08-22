@@ -3,7 +3,7 @@
     require_once('Session.php');
     require_once('PupError.php');
 
-    $e = PupError('giveTea');
+    $e = new PupError('giveTea');
 
     if (PupSession::getUserType(PupSession::getUserID()) != 'M')
     {
