@@ -13,34 +13,29 @@
 
 <html>
     <head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="w3.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <script>
-        function stateChange()
-        {
-            //Save the server's response in a variable
-            let response = xmlhttp.responseText;
-            //We don't care about these states, so ignore them
-            if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
-                return;
-        }
+        <meta name="viewport" content="width=device-width" />
+        <link href="w3.css" rel="stylesheet" type="text/css" />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src='common.js'></script>
+        <script>
+            function giveTea(userID)
+            {
+                const action = '/givetea.php';
 
-        function giveTea(userID)
-        {
-            let action = '/givetea.php';
-            xmlhttp = new XMLHttpRequest();
-            let amount = document.getElementById('input' + userID).value;
-
-            //Open our http request as POST with our action variable
-            xmlhttp.open("POST", action, true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xmlhttp.onreadystatechange = stateChange;
-            xmlhttp.send('userID=' + userID + '&' + 'amount=' + amount);
-            document.getElementById('tea' + userID).value = amount;
-        }
-    </script>
+                let dataObject = {
+                    'amount': getInputValue('input' + userID),
+                    'userID': userID
+                }
+                
+                asyncSend(
+                    action,
+                    'giveTea',
+                    dataObject,
+                    null,
+                    null
+                )
+            }
+        </script>
     </head>
     <body>
     <header class="main-header">
