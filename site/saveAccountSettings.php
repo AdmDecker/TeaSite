@@ -32,7 +32,7 @@
     {
         $email = $POST['email'];
         try {
-            $db->setEmail($userID);
+            $db->setEmail($userID, $email);
         } 
         catch(Exception $ex) { 
             exit( $e->Error('Database Error: '.$ex->getMessage()) );
