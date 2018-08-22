@@ -90,6 +90,8 @@
                     successCallBack(giftAmount),
                     callBack,
                 );
+
+                setInputValue('giftAmount', '0');
             }
         </script>
     </head>
