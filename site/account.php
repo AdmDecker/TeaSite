@@ -10,7 +10,6 @@
         <link href="style.css" rel="stylesheet" type="text/css">
         <script src='common.js'></script>
         <script type="text/javascript">
-            
             function submitForm(form) {
                 const action = '/saveAccountSettings.php';
                 
@@ -38,13 +37,16 @@
                 }
                 else return;
                 
+                const callBack = function (message) {
+                    displayError( form, message );
+                };
+                
                 asyncSend(
                     action,
                     form,
                     dataObject,
-                    function () { displayError( form, 'Successfully saved ' + form + ' settings!' ); },
-                    function (message) { displayError( form, message ); },
-                    debug
+                    callBack,
+                    callBack
                 )
             }
             
