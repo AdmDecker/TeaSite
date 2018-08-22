@@ -35,7 +35,7 @@
             $db->setEmailAddress($userID);
         } 
         catch(Exception $ex) { 
-            exit( $e->Error('Database Error: '.$ex->getMessage() );
+            exit( $e->Error('Database Error: '.$ex->getMessage()) );
         }
     }
     else if ($section == 'username')
