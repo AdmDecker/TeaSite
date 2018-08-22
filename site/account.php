@@ -97,8 +97,11 @@
             <input class='w3-input' type='email' placeholder='Email Address' id='email' value=
                    <?php echo '\''.PupSession::getEmail().'\''; ?>
             /><br />
-            <input id='emailEnabled' class='w3-check' type='checkbox' checked=
-                   <?php echo '\''.PupSession::getEmailEnabled().'\''; ?>
+            <input id='emailEnabled' class='w3-check' type='checkbox'
+                   <?php
+                       if (PupSession::getEmailEnabled())
+                           echo 'checked';
+                   ?>
             /><label>Enable Notifications</label><br /><br />
             <button class='w3-button w3-blue' onclick='saveNotification()'>Save Notification Settings</button><br /><br />
             <div id="notificationError"></div>
