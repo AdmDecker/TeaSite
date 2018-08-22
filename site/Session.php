@@ -157,9 +157,6 @@ class PupSession {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
         $db = new dbAccess();
-        if ($db->getEmailEnabled($userID))
-            return 'true';
-        else
-            return 'false';
+        return $db->getEmailEnabled($userID);
     }
 }
