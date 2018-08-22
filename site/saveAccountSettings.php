@@ -6,14 +6,14 @@
     PupSession::Validate();
 
     $POST = json_decode(file_get_contents('php://input'), true);
-    $section = $POST['form'];
+    $form = $POST['form'];
     $db = new dbAccess();
     $username = PupSession::getUsername();
     $userID = PupSession::getUserID();
 
     $e = new PupError($section);
 
-    if ($section === 'password')
+    if ($form === 'password')
     {
         $newPass = $POST['newPass'];
         $oldPass = $POST['oldPass'];
@@ -28,7 +28,7 @@
 
         $db->setPassword($userID, $newPass);
     }
-    else if ($section == 'notification')
+    else if ($form == 'notification')
     {
         $email = $POST['email'];
         try {
@@ -38,7 +38,7 @@
             exit( $e->Error('Database Error: '.$ex->getMessage()) );
         }
     }
-    else if ($section == 'username')
+    else if ($form == 'username')
     {
         $newUsername = $POST['newUsername'];
         $password = $POST['password'];
