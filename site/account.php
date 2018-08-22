@@ -107,7 +107,7 @@
             <div id="notificationError"></div>
         </div>
         <br /><br />
-        <button onclick="window.location = '/index.php'">Back</button>
+        <button class='w3-button w3-red' onclick="window.location = '/index.php'">Back</button>
 
         <br /><br /><br /><br />
     </body>
