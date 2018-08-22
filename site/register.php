@@ -19,11 +19,11 @@
 
 	try {
 		//Create our database object
-		$db = new dbaccess();
+		$db = new dbAccess();
 
 		//Check if the user already exists.
 		$user_inDB = $db->getUserID($username);
-			if (!is_null($user_inDB))
+		if (!is_null($user_inDB))
 		{
 			exit( $e->Error('User already exists') );
 		}
