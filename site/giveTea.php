@@ -5,15 +5,15 @@
 
     $POST = json_decode(file_get_contents('php://input'), true);
 
+    $userID = $POST['userID'];
+    $amount = $POST['amount'];
+    $form = $POST['form'];
+    $e = new PupError($form);
+    
     if (PupSession::getUserType(PupSession::getUserID()) != 'M')
     {
         exit( $e->Error('Your session has expired. Please log in again') );
     }
-
-    $userID = $POST['userID'];
-    $amount = $POST['amount'];
-    $form = $POST['form']
-    $e = new PupError($form);
 
     $db = new dbAccess();
     $username = '';
