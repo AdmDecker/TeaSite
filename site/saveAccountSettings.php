@@ -11,7 +11,7 @@
     $username = PupSession::getUsername();
     $userID = PupSession::getUserID();
 
-    $e = new PupError($section);
+    $e = new PupError($form);
 
     if ($form === 'password')
     {
