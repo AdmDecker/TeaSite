@@ -2,12 +2,13 @@
     require_once('dbaccess.php');
 	require_once('PupError.php');
 
-	$e = new PupError('register');
+
 
 	$POST = json_decode(file_get_contents('php://input'), true);
     $password = $POST['password'];
     $username = trim($POST['username']);
 	$registerCode = htmlspecialchars(trim($POST['registerCode']));
+	$e = new PupError($POST['form']);
 
     //Check Registercode
     
