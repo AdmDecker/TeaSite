@@ -152,7 +152,7 @@ class dbAccess
         $statement->execute();
     }
 	
-	public function setEmailAddress($userID, $email)
+	public function setEmail($userID, $email)
     {
         $statement = $this->dbObject->prepare("UPDATE users set email=:email WHERE userID=:userID");
         $statement->bindParam(':userID', $userID);
@@ -160,7 +160,7 @@ class dbAccess
         $statement->execute();
     }
     
-    public function getEmailAddress($userID)
+    public function getEmail($userID)
     {
         $statement = $this->dbObject->prepare("SELECT email FROM users WHERE userID=:userID");
         $statement->bindParam(':userID', $userID);
