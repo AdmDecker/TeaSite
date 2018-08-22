@@ -64,6 +64,9 @@
                     debug
                 );
             }
+            
+            teas = <?php $teas ?>;
+            toggleOrdering(teas > 0);
         </script>
     </head>
     <body>
