@@ -10,7 +10,7 @@
 
 	if(!PupSession::canOrder())
 	{
-		echo $e->Error('You can\'t order right now!');
+		echo $e->Error('You can\'t order right now! Please wait 15 minutes before ordering again.');
 		exit();
 	}
 	

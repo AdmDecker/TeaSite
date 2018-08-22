@@ -15,8 +15,6 @@
         <script src='jquery.js'></script>
         <script src='common.js'></script>
         <script>
-            debug = true;
-
             function toggleOrdering(enable) {
                 if (enable) {
                     $('#requestTea').removeClass('w3-disabled');
@@ -27,39 +25,66 @@
                     $('#minutesMessage').removeClass('hidden');
                 }
             }
+
+            function updateTeasCounter() {
+                displayError('teasCounter', 'You have ' + teas + ' teas');
+                if (teas <= 0)
+                    toggleOrdering(false);
+            }
             
             function requestTea() {
                 
-                let dataObject = {};
-                dataObject.requestMessage = document.getElementById('orderMessage').value;
+                let dataObject = {
+                    'requestMessage': getInputValue('orderMessage'),
+                }
                 
                 let action = '/requestTea.php';
                 let form = 'requestTea';
+
+                const callBack = function (message) {
+                    displayError(form, message);
+                }
+
+                const successCallBack = function(message) {
+                    callBack(message);
+                    teas = teas - 1;
+                    updateTeasCounter();
+                }
                 
                 asyncSend(
                     action,
                     form,
                     dataObject,
-                    function () {  },
-                    function () { window.location = '/orderFailed.html'; },
-                    debug);
+                    successCallBack,
+                    callBack
+                );
+
+                toggleOrdering(false);
             }
             
             function giftTeas() {
-                let form = 'gift';
+                const form = 'gift';
+                const giftAmount = getInputValue('giftAmount');
                 
                 let dataObject = {
                     giftRecipient: getInputValue('giftRecipient'),
-                    giftAmount: getInputValue('giftAmount'),
+                    giftAmount: giftAmount,
                 };
                 
                 const callBack = function (message) { displayError( form, message); };
+                const successCallBack = function (giftAmount) {
+                    return function (message) {
+                        callBack(message);
+                        teas = teas - giftAmount;
+                        updateTeasCounter();
+                    }
+                }
                 
                 asyncSend(
                     '/gift.php',
                     form,
                     dataObject,
-                    callBack,
+                    successCallBack(giftAmount),
                     callBack,
                     debug
                 );
@@ -76,12 +101,10 @@
         </header>
         <div class='center' style="text-align: center">
             <h2 class='center'>Welcome <?php echo PupSession::getUsername(); ?></h2>
-            <p class='center'>You have <?php echo $teas; ?> teas</p>
-            <?php
-                echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>";
-                echo "<button id='requestTea' class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
-                echo "<p id='minutesMessage'>You may only order once every 15 minutes</p>";
-            ?>
+            <p class='center' id='teasCounterError'></p>
+            <input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>"
+            <button id='requestTea' onclick='requestTea()' class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>"
+            <label id='requestTeaError'></label>
             <label class='error' id='requestTeaError'></label>
             <br /><br />
             <h3 class='center'>Gift Teas</h3>
