@@ -3,7 +3,7 @@
     require_once('dbaccess.php');
 
     if (PupSession::getUserType() != 'M')
-        header('Location: /accessDenied.html');
+        header('Location: /index.php');
 
     //get all the user data
     $db = new dbAccess();
@@ -13,34 +13,34 @@
 
 <html>
     <head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="w3.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <script>
-        function stateChange()
-        {
-            //Save the server's response in a variable
-            let response = xmlhttp.responseText;
-            //We don't care about these states, so ignore them
-            if (!(xmlhttp.readyState==4) && !(xmlhttp.status==200))
-                return;
-        }
+        <meta name="viewport" content="width=device-width" />
+        <link href="w3.css" rel="stylesheet" type="text/css" />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src='common.js'></script>
+        <script>
+            function giveTea(userID)
+            {
+                const action = '/giveTea.php';
+                const form = 'giveTea';
 
-        function giveTea(userID)
-        {
-            let action = '/givetea.php';
-            xmlhttp = new XMLHttpRequest();
-            let amount = document.getElementById('input' + userID).value;
-
-            //Open our http request as POST with our action variable
-            xmlhttp.open("POST", action, true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xmlhttp.onreadystatechange = stateChange;
-            xmlhttp.send('userID=' + userID + '&' + 'amount=' + amount);
-            document.getElementById('tea' + userID).value = amount;
-        }
-    </script>
+                let dataObject = {
+                    'amount': getInputValue('input' + userID),
+                    'userID': userID
+                }
+                
+                const callBack = function (message) {
+                    displayError(form, message);
+                }
+                
+                asyncSend(
+                    action,
+                    form,
+                    dataObject,
+                    callBack,
+                    callBack
+                )
+            }
+        </script>
     </head>
     <body>
     <header class="main-header">
@@ -64,14 +64,16 @@
                     $id = $user['userID'];
                     echo "
                         <div>
-                            <span>$name</span>
-                            <span id='tea$id'><input class='w3-input w3-border table-button' type='number' id='input$id' min='0' value='$teas' /></span>
-                            <span height='25' ><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Set Teas</button></span>
+                            <span class='vcenter'>$name</span>
+                            <span id='tea$id' class='vcenter'><input class='w3-input w3-border table-button' type='number' id='input$id' min='0' value='$teas' /></span>
+                            <span height='25' class='vcenter'><button class='w3-button w3-blue table-button' onclick='giveTea($id)'>Set Teas</button></span>
                         </div>
                         ";
                 }
             ?>
         </div>
-        <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
+        <br>
+        <label id='giveTeaError' class='center center-text error' ></label>
+        <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
     </body>
 </html>
