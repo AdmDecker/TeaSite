@@ -21,18 +21,23 @@
             function giveTea(userID)
             {
                 const action = '/giveTea.php';
+                const form = 'giveTea';
 
                 let dataObject = {
                     'amount': getInputValue('input' + userID),
                     'userID': userID
                 }
                 
+                const callBack = function (message) {
+                    displayError(form, message);
+                }
+                
                 asyncSend(
                     action,
-                    'giveTea',
+                    form,
                     dataObject,
-                    null,
-                    null
+                    callBack,
+                    callBack
                 )
             }
         </script>
@@ -67,6 +72,8 @@
                 }
             ?>
         </div>
+        <br>
+        <label id='giveTeaError'></label>
         <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
     </body>
 </html>
