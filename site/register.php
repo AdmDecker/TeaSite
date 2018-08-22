@@ -1,14 +1,20 @@
 <?php
-    require 'dbaccess.php';
-    $password = $_POST['password'];
-    $username = trim($_POST['username']);
+    require_once('dbaccess.php');
+	require_once('PupError.php');
+
+	$e = new PupError('register');
+
+	$POST = json_decode(file_get_contents('php://input'), true);
+    $password = $POST['password'];
+    $username = trim($POST['username']);
+	$registerCode = htmlspecialchars(trim($POST['registerCode']));
+
     //Check Registercode
-    $registerCode = htmlspecialchars(trim($_POST['registerCode']));
+    
     $realCode = 'puppertea';
     if ($registerCode != $realCode)
     {
-		echo 'Incorrect registration code';
-		exit();
+		exit( $e->Error( 'Incorrect registration code' ) );
     }
 
 	try {
@@ -19,8 +25,7 @@
 		$user_inDB = $db->getUserID($username);
 			if (!is_null($user_inDB))
 		{
-		    echo "User already exists";
-		    exit();
+			exit( $e->Error('User already exists') );
 		}
 
 		//Insert user to database
@@ -34,11 +39,11 @@
 		$_SESSION['timeout'] = time() + 60*60*12;
 		$_SESSION['userID'] = $userID;
 		$_SESSION['userType'] = $db->getUserType($userID);
-		echo "success-register";
+		exit( $e->Redirect('index.php') );
 	}
-	catch(PDOException $e)
+	catch(PDOException $ex)
 	{
-		echo "Database error: " . $e->getMessage();
+		exit( $e->Error( "Database error: " . $ex->getMessage() );
 	}
 
 ?>
