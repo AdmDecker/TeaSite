@@ -151,36 +151,25 @@ class dbAccess
         $statement->bindParam(':timeOfNextOrder', $timeOfNextOrder);
         $statement->execute();
     }
-	
-	public function setEmail($userID, $email)
+
+    public function setEmail($userID, $email)
     {
-        $statement = $this->dbObject->prepare("UPDATE users set email=:email WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->bindParam(':email', $email);
-        $statement->execute();
+        setUserField($userID, 'email', $email);    
     }
     
     public function getEmail($userID)
     {
-        $statement = $this->dbObject->prepare("SELECT email FROM users WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        $email = $statement->fetch();
-        if (!empty($email))
-            return $email['email'];
-        else
-            return NULL;
+        return getUserField($userID, 'email');
     }
 	
     public function getEmailEnabled($userID)
     {
-        
+        return getUserField($userID, 'emailEnabled');
     }
     
-    public function setEmailEnabled($userID)
+    public function setEmailEnabled($userID, $enabled)
     {
-        
+        setUserField($userID, 'emailEnabled', $enabled);
     }
     
     private function setUserField($userID, $fieldName, $newValue)
