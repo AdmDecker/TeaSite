@@ -36,11 +36,12 @@
         function onLogin()
         {
             submitForm("login");
-            document.getElementById("error").innerHTML = "Logging in...";
+            displayError('login', 'Logging in...');
         }
         function onRegister()
         {
             submitForm("register");
+            displayError('login', 'Sending information...');
         }
     </script>
     <link rel="apple-touch-icon" href="puppy.png" />
