@@ -166,7 +166,11 @@ class dbAccess
         $statement->bindParam(':userID', $userID);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetch()['email'];
+	$email = $statement->fetch();
+        if (!empty($email))
+            return $email['email'];
+        else
+            return NULL;
     }
 }
 ?>
