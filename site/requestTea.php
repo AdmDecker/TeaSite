@@ -10,8 +10,7 @@
 
 	if(!PupSession::canOrder())
 	{
-		echo $e->Error('You can\'t order right now! Please wait 15 minutes before ordering again.');
-		exit();
+		exit( $e->Error('You can\'t order right now! Please wait 15 minutes before ordering again.') );
 	}
 	
 	
@@ -23,7 +22,7 @@
 	$requestMessage = filter_var(trim($POST['requestMessage']), FILTER_SANITIZE_STRING);
 	
 	$orderer = filter_var(PupSession::getUsername(), FILTER_SANITIZE_STRING);
-	$subject = "$itemordered Order From $orderer";
+	$subject = "$itemOrdered order From $orderer";
 	
 	$message = "<html><p>Request Message:</p><p>$requestMessage</p></html>";
 	$headers = "From: orders@t.pupperino.net\r\n";

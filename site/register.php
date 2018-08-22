@@ -39,7 +39,7 @@
 		$_SESSION['timeout'] = time() + 60*60*12;
 		$_SESSION['userID'] = $userID;
 		$_SESSION['userType'] = $db->getUserType($userID);
-		exit( $e->Redirect('index.php') );
+		exit( $e->Redirect('/index.php') );
 	}
 	catch(PDOException $ex)
 	{
