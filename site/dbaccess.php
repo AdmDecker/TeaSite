@@ -166,11 +166,43 @@ class dbAccess
         $statement->bindParam(':userID', $userID);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
-	$email = $statement->fetch();
+        $email = $statement->fetch();
         if (!empty($email))
             return $email['email'];
         else
             return NULL;
     }
+	
+    public function getEmailEnabled($userID)
+    {
+        
+    }
+    
+    public function setEmailEnabled($userID)
+    {
+        
+    }
+    
+    private function setUserField($userID, $fieldName, $newValue)
+    {
+        $statement = $this->dbObject->prepare("UPDATE users set $fieldName=:newValue WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->bindParam(':newValue', $newValue);
+        $statement->execute();
+    }
+    
+    private function getUserField($userID, $fieldName)
+    {
+        $statement = $this->dbObject->prepare("SELECT $fieldName FROM users WHERE userID=:userID");
+        $statement->bindParam(':userID', $userID);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $statement->fetch();
+        if (!empty($row))
+            return $row[$fieldName];
+        else
+            return NULL;
+    }
+	
 }
 ?>
