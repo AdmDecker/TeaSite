@@ -108,6 +108,8 @@
         </div>
         <br /><br />
         <button onclick="window.location = '/index.php'">Back</button>
+
+        <br /><br /><br /><br />
     </body>
 </html>
 <?php exit() ?>
