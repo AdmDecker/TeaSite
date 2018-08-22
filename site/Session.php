@@ -151,4 +151,12 @@ class PupSession {
         $db = new dbAccess();
         return $db->getEmail($userID);
     }
+    
+    public static function getEmailEnabled()
+    {
+        PupSession::LoadSession();
+        $userID = PupSession::getUserID();
+        $db = new dbAccess();
+        return $db->getEmailEnabled($userID);
+    }
 }
