@@ -3,7 +3,7 @@
     require_once('dbaccess.php');
 
     if (PupSession::getUserType() != 'M')
-        header('Location: /accessDenied.html');
+        header('Location: /index.php');
 
     //get all the user data
     $db = new dbAccess();
@@ -20,7 +20,7 @@
         <script>
             function giveTea(userID)
             {
-                const action = '/givetea.php';
+                const action = '/giveTea.php';
 
                 let dataObject = {
                     'amount': getInputValue('input' + userID),
