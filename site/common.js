@@ -48,7 +48,7 @@ function asyncSend(action, form, dataObject, successCallback, failCallback) {
     try {
         xmlhttp[form].send(jsonData);
     }
-    catch {
+    catch(error) {
         console.log('Send failure (DATA NOT JSON ENCODABLE)');
         console.log(dataObject);
         return;
