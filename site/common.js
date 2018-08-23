@@ -9,7 +9,7 @@ function stateChange(form, successCallback, failCallback) {
         try {
             response = JSON.parse(responseText);
         }
-        catch {
+        catch (error) {
             console.log('Server error (NOT JSON): ' + responseText);
             return;
         }
