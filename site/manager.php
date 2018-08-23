@@ -74,6 +74,6 @@
         </div>
         <br>
         <label id='giveTeaError' class='center center-text error' ></label>
-        <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
+        <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location.href='/logout.php'">Logout</button></div>
     </body>
 </html>

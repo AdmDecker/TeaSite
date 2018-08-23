@@ -22,7 +22,7 @@ function stateChange(form, successCallback, failCallback) {
     
         //Handle each action
         if (response.action === 'redirect')
-            window.location = response.location;
+            window.location.href = response.location;
         else if(response.action === 'error') {
             failCallback(response.message);
         }

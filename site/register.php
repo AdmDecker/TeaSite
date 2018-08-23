@@ -2,8 +2,6 @@
     require_once('dbaccess.php');
 	require_once('PupError.php');
 
-
-
 	$POST = json_decode(file_get_contents('php://input'), true);
     $password = $POST['password'];
     $username = trim($POST['username']);
