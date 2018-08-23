@@ -86,7 +86,7 @@
                     form,
                     dataObject,
                     successCallBack(giftAmount),
-                    callBack,
+                    callBack
                 );
 
                 setInputValue('giftAmount', '0');
@@ -120,10 +120,10 @@
             <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
         </div>
         <br /><br /><br /><br />
+        <script>
+            teas = <?php echo $teas ?>;
+            toggleOrdering(true);
+            updateTeasCounter(teas);
+        </script>
     </body>
-    <script>
-        teas = <?php echo $teas ?>;
-        toggleOrdering(true);
-        updateTeasCounter(teas);
-    </script>
 </html>
