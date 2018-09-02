@@ -24,7 +24,7 @@
 
 		if (!is_null($passwd_inDB) && password_verify($password, $passwd_inDB))
         {
-            PupSession::Login($userID);
+            PupSession::Login($userID, TRUE);
         }	
 		else
 			echo $e->Error( 'Login Failed: Username and password do not match' );				

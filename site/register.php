@@ -34,7 +34,7 @@
 		//Get userID
 		$userID = $db->getUserID($username);
 
-		PupSession::Login($userID);
+		PupSession::Login($userID, TRUE);
 		exit( $e->Redirect('/index.php') );
 	}
 	catch(PDOException $ex)
