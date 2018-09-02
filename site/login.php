@@ -1,6 +1,7 @@
 <?php
     require_once('dbaccess.php');
-	require_once('PupError.php');
+    require_once('PupError.php');
+    require_once('Session.php');
 
 	$e = new PupError('login');
 
@@ -23,12 +24,7 @@
 
 		if (!is_null($passwd_inDB) && password_verify($password, $passwd_inDB))
         {
-            //Start the session
-            session_start();
-            $_SESSION['timeout'] = time() + 60 * 60 * 15;
-            $_SESSION['username'] = $username;
-            $_SESSION['userID'] = $userID;
-            $_SESSION['userType'] = $db->getUserType($userID);
+            PupSession::Login($userID);
             echo $e->Redirect('index.php');
         }	
 		else

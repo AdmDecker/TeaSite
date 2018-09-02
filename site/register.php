@@ -1,6 +1,7 @@
 <?php
-    require_once('dbaccess.php');
+  require_once('dbaccess.php');
 	require_once('PupError.php');
+	require_once('Session.php');
 
 	$POST = json_decode(file_get_contents('php://input'), true);
     $password = $POST['password'];
@@ -33,11 +34,7 @@
 		//Get userID
 		$userID = $db->getUserID($username);
 
-		session_start();
-		$_SESSION['username'] = $username;
-		$_SESSION['timeout'] = time() + 60*60*12;
-		$_SESSION['userID'] = $userID;
-		$_SESSION['userType'] = $db->getUserType($userID);
+		PupSession::Login($userID);
 		exit( $e->Redirect('/index.php') );
 	}
 	catch(PDOException $ex)
