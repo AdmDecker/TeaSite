@@ -56,7 +56,7 @@
                 foreach($data as $key=>$user)
                 {
                     $userID = $user['userID']
-                    $name = $user['userName'];
+                    $name = $user['username'];
                     $email = $user['email'];
                     echo "
                         <div>

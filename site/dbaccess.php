@@ -163,14 +163,14 @@ class dbAccess
         $statement->setFetchMode(PDO::FETCH_ASSOC);
         $row = $statement->fetchAll();
         if (!empty($row))
-            return $row['userID'];
+            return $row;
         else
             return NULL;
     }
 
     private function getUserByField($field, $fieldValue)
     {
-        return getUsersByField($field, $fieldValue)[0];
+        return getUsersByField($field, $fieldValue)[0]['userID'];
     }
 }
 ?>
