@@ -12,6 +12,7 @@
         $userID = $db->getUserByCookie($_COOKIE['loginCookie']);
         if ($userID !== NULL)
         {
+            trigger_error('logging in user by cookie');
             PupSession::Login($userID);
         }
     }
