@@ -16,7 +16,8 @@ class PupSession {
         $cookie = uniqid();
         
         $db->setUserCookie($userID, $cookie);
-        PupError::SetLoginCookie($cookie);
+        $e = new PupError('login');
+        $e->SetLoginCookie($cookie);
 
         PupSession::Create($timeout, $username, $userID, $userType, $teas);
     }
@@ -24,7 +25,8 @@ class PupSession {
     public static function Logout()
     {
         $db = new dbAccess();
-        PupError::SetLoginCookie('');
+        $e = new PupError('login');
+        $e->SetLoginCookie('');
         $db->setUserCookie(PupSession::getUserID(), '');
         PupSession::Destroy();
     }
