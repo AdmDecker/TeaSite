@@ -7,7 +7,7 @@
     if (isset($_COOKIE['loginCookie']))
     {
         $db = new dbAccess();
-        $userID = $db->getUserByCookie($_COOKIE['loginCookie'])
+        $userID = $db->getUserByCookie($_COOKIE['loginCookie']);
         if ($userID !== NULL)
         {
             PupSession::Login($userID);
