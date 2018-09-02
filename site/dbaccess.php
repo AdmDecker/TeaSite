@@ -157,12 +157,12 @@ class dbAccess
 
     private function getUsersByField($field, $fieldValue)
     {
-        $statement = $this->dbObject->prepare("SELECT userID FROM users WHERE $field=:fieldValue");
+        $statement = $this->dbObject->prepare("SELECT * FROM users WHERE $field=:fieldValue");
         $statement->bindParam('fieldValue', $fieldValue);
         $statement->execute();
-        $row = $statement->fetchAll();
-        if (!empty($row))
-            return $row;
+        $rows = $statement->fetchAll();
+        if (!empty($rows))
+            return $rows;
         else
             return NULL;
     }
