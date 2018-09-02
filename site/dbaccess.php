@@ -120,7 +120,7 @@ class dbAccess
 	
     public function getUsername($userID)
     {
-	    $statement = $this->dbObject->prepare("SELECT userName FROM users WHERE userID=:userID");
+	    $statement = $this->dbObject->prepare("SELECT username FROM users WHERE userID=:userID");
         $statement->bindParam(':userID', $userID);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -129,7 +129,7 @@ class dbAccess
 
     public function setUsername($userID, $newUsername)
     {
-        $statement = $this->dbObject->prepare("UPDATE users set userName=:newUsername WHERE userID=:userID");
+        $statement = $this->dbObject->prepare("UPDATE users set username=:newUsername WHERE userID=:userID");
         $statement->bindParam(':userID', $userID);
         $statement->bindParam(':newUsername', $newUsername);
         $statement->execute();
