@@ -1,5 +1,4 @@
 <?php
-require_once('PupError.php');
 require_once('dbaccess.php');
 
 class Notification 
@@ -16,7 +15,6 @@ class Notification
             return;
         }
 
-        $e = new PupError($POST['form']);
         $itemOrdered = 'Tea';
         
         $requestMessage = filter_var(trim($message, FILTER_SANITIZE_STRING));
