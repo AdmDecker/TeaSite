@@ -59,7 +59,7 @@
             <?php
                 foreach($data as $key=>$user)
                 {
-                    $name = $user['userName'];
+                    $name = $user['username'];
                     $teas = $user['teas'];
                     $id = $user['userID'];
                     echo "
