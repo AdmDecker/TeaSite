@@ -5,7 +5,7 @@
 
     trigger_error('cooking login');
     //Check for cookie
-    if (isset($_COOKIE['loginCookie']))
+    if (isset($_COOKIE['loginCookie']) && PupSession::getUserType() === 'U')
     {
         trigger_error($_COOKIE['loginCookie']);
         $db = new dbAccess();
@@ -14,7 +14,7 @@
         if ($userID != NULL)
         {
             trigger_error('logging in user by cookie');
-            PupSession::Login($userID);
+            PupSession::Login($userID, FALSE);
         }
     }
 

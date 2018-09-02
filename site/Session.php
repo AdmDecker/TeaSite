@@ -4,7 +4,7 @@ require_once('PupError.php');
 
 class PupSession {
 
-    public static function Login($userID)
+    public static function Login($userID, $createCookie = FALSE)
     {
         $db = new dbAccess();
 
@@ -13,11 +13,14 @@ class PupSession {
         $username = $db->getUsername($userID);
         $userType = $db->getUserType($userID);
         $teas = $db->getUserTeas($userID);
-        $cookie = uniqid();
-        
-        $db->setUserCookie($userID, $cookie);
-        $e = new PupError('login');
-        echo $e->Success($cookie);
+
+        if ($createCookie === TRUE) {
+            $cookie = uniqid();
+            
+            $db->setUserCookie($userID, $cookie);
+            $e = new PupError('login');
+            echo $e->Success($cookie);
+        }
 
         PupSession::Create($timeout, $username, $userID, $userType, $teas);
     }
