@@ -4,7 +4,7 @@ require_once('dbaccess.php');
 
 class Notification 
 {
-    public static sendNotification($userID, $subject, $message)
+    public static function sendNotification($userID, $subject, $message)
     {
         $db = new dbAccess();
 
