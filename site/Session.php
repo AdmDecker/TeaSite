@@ -30,7 +30,6 @@ class PupSession {
         $_SESSION['userID'] = $userID;
         $_SESSION['userType'] = $userType;
         $_SESSION['teas'] = $teas;
-        echo "success";
     }
     
     public static function Destroy()
