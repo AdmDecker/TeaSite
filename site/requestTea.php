@@ -16,7 +16,7 @@
 	}
 	
 	$db = new dbAccess();
-	$storeUserID = $db->getUserByUsername('Amber');
+	$storeUserID = $db->getUserID('Amber');
 	
 	PupSession::OrderTea();
 	
