@@ -11,7 +11,7 @@ class PupSession {
         $timeout = time() + (86400 * 3); //3 days
 
         $username = $db->getUsername($userID);
-        $userType = $db->getUserRole($userID);
+        $userType = $db->getUserType($userID);
         $teas = $db->getUserTeas($userID);
         $cookie = uniqid();
         
