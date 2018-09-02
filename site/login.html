@@ -26,7 +26,10 @@
               action,
               form,
               dataObject,
-              function () { console.log('Error: This code should not be reached') }, //Success = redirect so no callback
+              function (message) {
+                  setCookie('loginCookie', message, 3);
+                  redirectPage('/index.php');
+              },
               function (message) { displayError( 'login', message ); }
             );
         }

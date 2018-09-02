@@ -17,7 +17,7 @@ class PupSession {
         
         $db->setUserCookie($userID, $cookie);
         $e = new PupError('login');
-        echo $e->SetLoginCookie($cookie);
+        echo $e->Success($cookie);
 
         PupSession::Create($timeout, $username, $userID, $userType, $teas);
     }
