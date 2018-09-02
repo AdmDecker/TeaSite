@@ -162,11 +162,13 @@ class dbAccess
         $statement->bindParam('fieldValue', $fieldValue);
         $statement->execute();
         $rows = $statement->fetchAll();
-        if (!empty($rows))
+        if (!empty($rows)) {
             trigger_error($rows);
             return $rows;
-        else
+        }
+        else {
             return NULL;
+        }
     }
 
     private function getUserByField($field, $fieldValue)
