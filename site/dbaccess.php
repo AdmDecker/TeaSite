@@ -57,7 +57,8 @@ class dbAccess
 
     public function setPassword($userID, $password)
     {
-        $this->setUserField($userID, 'password', $password);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $this->setUserField($userID, 'password', $hashedPassword);
     }
     
     public function getUserID($username)
