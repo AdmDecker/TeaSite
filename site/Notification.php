@@ -19,7 +19,7 @@ class Notification
         $e = new PupError($POST['form']);
         $itemOrdered = 'Tea';
         
-        $requestMessage = filter_var(trim($message, FILTER_SANITIZE_STRING);
+        $requestMessage = filter_var(trim($message, FILTER_SANITIZE_STRING));
         
         $message = "<html>$requestMessage</html>";
         $headers = "From: orders@t.pupperino.net\r\n";
