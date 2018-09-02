@@ -170,7 +170,7 @@ class dbAccess
 
     private function getUserByField($field, $fieldValue)
     {
-        return getUsersByField($field, $fieldValue)[0]['userID'];
+        return $this->getUsersByField($field, $fieldValue)[0]['userID'];
     }
 }
 ?>
