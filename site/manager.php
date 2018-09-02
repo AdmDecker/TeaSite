@@ -41,6 +41,8 @@
                 )
             }
         </script>
+        <link rel="apple-touch-icon" href="puppy.png" />
+        <link rel="icon" href='puppy.png' />
     </head>
     <body>
     <header class="main-header">
