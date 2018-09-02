@@ -1,5 +1,5 @@
 <?php
-require_once('error.php');
+require_once('PupError.php');
 require_once('dbaccess.php');
 
 class Notification 
