@@ -42,7 +42,7 @@ class dbAccess
 
     public function getUserByCookie($cookie)
     {
-        return $this->getUserByField('cookie', $cookie);
+        return $this->getUserByField('loginCookie', $cookie);
     }
 
     public function setUserCookie($userID, $cookie)
