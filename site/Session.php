@@ -79,7 +79,7 @@ class PupSession {
     
     public static function ReturnToDefault()
     {
-        header('Location: /login.html');
+        header('Location: /index.php');
             
         $e = new PupError('');
         exit($e->Redirect('/index.php'));

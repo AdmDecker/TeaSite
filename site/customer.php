@@ -1,6 +1,5 @@
 <?php
     require_once('Session.php');
-    PupSession::LoadSession();
     PupSession::Validate();
     $teas = PupSession::getTeas();
     $canOrder = PupSession::canOrder();
