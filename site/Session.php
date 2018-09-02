@@ -20,6 +20,13 @@ class PupSession {
 
         PupSession::Create($timeout, $username, $userID, $userType, $teas);
     }
+
+    public static function Logout()
+    {
+        $db = new dbAccess();
+        $db->setUserCookie(PupSession::getUserID(), '');
+        PupSession::Destroy();
+    }
     
     public static function Create($timeout, $username, $userID, $userType, $teas)
     {
