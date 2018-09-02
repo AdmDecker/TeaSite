@@ -1,6 +1,7 @@
 <?php
     require_once('dbaccess.php');
-	require_once('PupError.php');
+    require_once('PupError.php');
+    require_once('Session.php');
 
 	$e = new PupError('login');
 
