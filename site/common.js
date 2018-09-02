@@ -1,3 +1,7 @@
+var imported = document.createElement('script'); 
+imported.src = '/jQuery.js'; 
+document.head.appendChild(imported);
+
 function stateChange(form, successCallback, failCallback) {
     return function () {
         //We don't care about these states, so ignore them
@@ -72,6 +76,16 @@ function getCheckboxValue(id) {
 
 function displayError(formId, errorMessage) {
     document.getElementById(formId + 'Error').innerHTML = errorMessage;
+}
+
+function displaySuccess(formId, successMessage) {
+    $('#' + formId + 'error').addClass('success').removeClass('error').innerHTML = successMessage;
+}
+
+function defaultCallback(formId, message, error)
+{
+    if (error)
+        return function () { displayError(formId, message) }
 }
 
 xmlhttp = [];

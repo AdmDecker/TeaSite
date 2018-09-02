@@ -15,15 +15,20 @@
         exit( $e->Error('Your session has expired. Please log in again') );
     }
 
+    $oldTeas = 0;
     $db = new dbAccess();
     $username = '';
     try {
         $username = $db->getUsername($userID);
+        $oldTeas = $db->getUserTeas($userID);
         $db->setUserTeas($userID, $amount);
     }
     catch(PDOException $ex) {
         exit( $e->Error('Database error: '.$ex->getMessage()) );
     }
+
+    Notification::sendNotification($userID, 'Your teas count has changed',
+        "Old amount: $oldTeas <br> New amount: $amount");
         
     echo $e->Success("Successfully set teas for $username to $amount");
 ?>

@@ -3,6 +3,23 @@ require_once('dbaccess.php');
 require_once('PupError.php');
 
 class PupSession {
+
+    public static function Login($userID)
+    {
+        $db = new dbAccess();
+
+        $timeout = time() + (86400 * 3); //3 days
+
+        $username = $db->getUsername($userID);
+        $userType = $db->getUserRole($userID);
+        $teas = $db->getUserTeas($userID);
+        $cookie = uniqid();
+        
+        $db->setUserCookie($userID, $cookie);
+        setcookie('loginCookie', $cookie, $timeout, '/');
+
+        PupSession::Create($timeout, $username, $userID, $userType, $teas);
+    }
     
     public static function Create($timeout, $username, $userID, $userType, $teas)
     {
@@ -159,4 +176,6 @@ class PupSession {
         $db = new dbAccess();
         return $db->getEmailEnabled($userID);
     }
+
+    public static function sendNotification($
 }

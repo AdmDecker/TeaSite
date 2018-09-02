@@ -27,7 +27,7 @@ class dbAccess
     {
         //Insert user to database
         $username = trim($username);
-        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0, NULL, 0)");
+        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0, NULL, 0, 0)");
         $statement->bindParam(':username', $username);
         $statement->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
         $statement->bindParam(':role', $role);
@@ -37,71 +37,47 @@ class dbAccess
 
     public function getAllUsersByRole($role)
     {
-        $statement = $this->dbObject->prepare('SELECT * FROM users WHERE role=:role');
-        $statement->bindParam(':role', $role);
-        $statement->execute();
-        return $statement->fetchAll();
+        return getUsersByField('role', $role);
+    }
+
+    public function getUserByCookie($cookie)
+    {
+        return getUserByCookie('cookie', $cookie);
+    }
+
+    public function setUserCookie($user, $cookie)
+    {
+        setUserField($userID, 'loginCookie', $cookie);
     }
     
     public function getPassword($userID)
     {
-        $statement = $this->dbObject->prepare("select password from users 
-            where userID = :userID");
-		$statement->bindParam(':userID', $userID);;
-		$statement->execute();
-		$statement->setFetchMode(PDO::FETCH_ASSOC);
-		$passwd_inDB = $statement->fetch();
-        if (!empty($passwd_inDB))
-            return $passwd_inDB["password"];
-        else
-            return NULL;
+        return getUserField($userID, 'password');
     }
 
     public function setPassword($userID, $password)
     {
-        $statement = $this->dbObject->prepare("UPDATE users SET password=:password WHERE userID=:userID");
-        $statement->bindParam(':password', password_hash($password, PASSWORD_DEFAULT));
-        $statement->bindParam(':userID', $userID);
-        $statement->execute();
+        setUserField($userID, 'password', $password);
     }
     
     public function getUserID($username)
     {
-        //Get userID
-        $statement = $this->dbObject->prepare("SELECT userID FROM users where username=:username");
-        $statement->bindParam(':username', $username);
-        $statement->execute();
-        $userID = $statement->fetch();
-        if (!empty($userID))
-            return $userID['userID'];
-        else
-            return NULL;
+        return getUserByField('username', $username);
     }
     
     public function getUserType($userID)
     {
-        $statement = $this->dbObject->prepare("SELECT role FROM users WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetch()['role'];
+        return getUserField($userID, 'role');
     }
 
     public function getUserTeas($userID)
     {
-        $statement = $this->dbObject->prepare("SELECT teas FROM users WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetch()['teas'];
+        return getUserField($userID, 'teas');
     }
 
 	public function setUserTeas($userID, $amount)
     {
-        $statement = $this->dbObject->prepare("UPDATE users SET teas=:amount WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-		$statement->bindParam(':amount', $amount);
-        $statement->execute();
+        setUserTeas($userID, 'teas', $amount);
     }
 	
     public function incrementUserTeas($userID)
@@ -120,36 +96,22 @@ class dbAccess
 	
     public function getUsername($userID)
     {
-	    $statement = $this->dbObject->prepare("SELECT userName FROM users WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetch()['userName']; 
+	    return getUserField($userID, 'username');
     }
 
     public function setUsername($userID, $newUsername)
     {
-        $statement = $this->dbObject->prepare("UPDATE users set userName=:newUsername WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->bindParam(':newUsername', $newUsername);
-        $statement->execute();
+        setUserField($userID, 'username', $newUsername);
     }
 
     public function getTimeOfNextOrder($userID)
     {	
-        $statement = $this->dbObject->prepare("SELECT timeOfNextOrder FROM users WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetch()['timeOfNextOrder'];
+        return getUserField($userID, 'timeOfNextOrder');
     }
 
     public function setTimeOfNextOrder($userID, $timeOfNextOrder)
     {
-        $statement = $this->dbObject->prepare("UPDATE users set timeOfNextOrder=:timeOfNextOrder WHERE userID=:userID");
-        $statement->bindParam(':userID', $userID);
-        $statement->bindParam(':timeOfNextOrder', $timeOfNextOrder);
-        $statement->execute();
+        setUserField($userID, 'timeOfNextOrder', $timeOfNextOrder);
     }
 
     public function setEmail($userID, $email)
@@ -192,6 +154,23 @@ class dbAccess
         else
             return NULL;
     }
-	
+
+    private function getUsersByField($field, $fieldValue)
+    {
+        $statement = $this->dbObject->prepare("SELECT userID FROM users WHERE $field=:fieldValue");
+        $statement->bindParam('fieldValue', $fieldValue);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $statement->fetchAll();
+        if (!empty($row))
+            return $row['userID'];
+        else
+            return NULL;
+    }
+
+    private function getUserByField($field, $fieldValue)
+    {
+        return getUsersByField($field, $fieldValue)[0];
+    }
 }
 ?>
