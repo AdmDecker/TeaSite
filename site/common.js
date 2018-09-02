@@ -13,7 +13,7 @@ function stateChange(form, successCallback, failCallback) {
         try {
             response = JSON.parse(responseText);
         }
-        catch {
+        catch (error) {
             console.log('Server error (NOT JSON): ' + responseText);
             return;
         }
@@ -52,7 +52,7 @@ function asyncSend(action, form, dataObject, successCallback, failCallback) {
     try {
         xmlhttp[form].send(jsonData);
     }
-    catch {
+    catch(error) {
         console.log('Send failure (DATA NOT JSON ENCODABLE)');
         console.log(dataObject);
         return;
