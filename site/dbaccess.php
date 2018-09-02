@@ -45,7 +45,7 @@ class dbAccess
         return $this->getUserByCookie('cookie', $cookie);
     }
 
-    public function setUserCookie($user, $cookie)
+    public function setUserCookie($userID, $cookie)
     {
         $this->setUserField($userID, 'loginCookie', $cookie);
     }
