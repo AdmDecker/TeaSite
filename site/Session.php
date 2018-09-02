@@ -176,6 +176,4 @@ class PupSession {
         $db = new dbAccess();
         return $db->getEmailEnabled($userID);
     }
-
-    public static function sendNotification($
 }
