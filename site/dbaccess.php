@@ -37,47 +37,47 @@ class dbAccess
 
     public function getAllUsersByRole($role)
     {
-        return getUsersByField('role', $role);
+        return $this->getUsersByField('role', $role);
     }
 
     public function getUserByCookie($cookie)
     {
-        return getUserByCookie('cookie', $cookie);
+        return $this->getUserByCookie('cookie', $cookie);
     }
 
     public function setUserCookie($user, $cookie)
     {
-        setUserField($userID, 'loginCookie', $cookie);
+        $this->setUserField($userID, 'loginCookie', $cookie);
     }
     
     public function getPassword($userID)
     {
-        return getUserField($userID, 'password');
+        return $this->getUserField($userID, 'password');
     }
 
     public function setPassword($userID, $password)
     {
-        setUserField($userID, 'password', $password);
+        $this->setUserField($userID, 'password', $password);
     }
     
     public function getUserID($username)
     {
-        return getUserByField('username', $username);
+        return $this->getUserByField('username', $username);
     }
     
     public function getUserType($userID)
     {
-        return getUserField($userID, 'role');
+        return $this->getUserField($userID, 'role');
     }
 
     public function getUserTeas($userID)
     {
-        return getUserField($userID, 'teas');
+        return $this->getUserField($userID, 'teas');
     }
 
 	public function setUserTeas($userID, $amount)
     {
-        setUserTeas($userID, 'teas', $amount);
+        $this->setUserTeas($userID, 'teas', $amount);
     }
 	
     public function incrementUserTeas($userID)
@@ -96,22 +96,22 @@ class dbAccess
 	
     public function getUsername($userID)
     {
-	    return getUserField($userID, 'username');
+	    return $this->getUserField($userID, 'username');
     }
 
     public function setUsername($userID, $newUsername)
     {
-        setUserField($userID, 'username', $newUsername);
+        $this->setUserField($userID, 'username', $newUsername);
     }
 
     public function getTimeOfNextOrder($userID)
     {	
-        return getUserField($userID, 'timeOfNextOrder');
+        return $this->getUserField($userID, 'timeOfNextOrder');
     }
 
     public function setTimeOfNextOrder($userID, $timeOfNextOrder)
     {
-        setUserField($userID, 'timeOfNextOrder', $timeOfNextOrder);
+        $this->setUserField($userID, 'timeOfNextOrder', $timeOfNextOrder);
     }
 
     public function setEmail($userID, $email)

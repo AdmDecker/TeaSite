@@ -8,6 +8,6 @@ CREATE TABLE users
     timeOfNextOrder int,
     email VARCHAR(80),
     emailEnabled BOOL,
-    loginCookie int,
+    loginCookie VARCHAR(255),
     PRIMARY KEY (userID)
 );
