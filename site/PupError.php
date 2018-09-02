@@ -23,6 +23,11 @@
             return $this->Build('success', $message, NULL);
         }
 
+        public function SetLoginCookie($cookieValue)
+        {
+            return $this->Build('setLoginCookie', $message, NULL);
+        }
+
         private function Build($action, $message, $redirectLocation)
         {
             $json = [

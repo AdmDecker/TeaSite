@@ -33,6 +33,9 @@ function stateChange(form, successCallback, failCallback) {
         else if(response.action === 'success') {
             successCallback(response.message);
         }
+        else if(response.action === 'setLoginCookie') {
+            setCookie('loginCookie', response.message, 3);
+        }
     }
 }
 
@@ -86,6 +89,13 @@ function defaultCallback(formId, message, error)
 {
     if (error)
         return function () { displayError(formId, message) }
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 xmlhttp = [];
