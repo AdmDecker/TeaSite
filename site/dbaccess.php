@@ -163,6 +163,7 @@ class dbAccess
         $statement->execute();
         $rows = $statement->fetchAll();
         if (!empty($rows))
+            trigger_error($rows);
             return $rows;
         else
             return NULL;
