@@ -77,7 +77,7 @@ class dbAccess
 
 	public function setUserTeas($userID, $amount)
     {
-        $this->setUserTeas($userID, 'teas', $amount);
+        $this->setUserField($userID, 'teas', $amount);
     }
 	
     public function incrementUserTeas($userID)
