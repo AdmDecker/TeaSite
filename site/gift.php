@@ -49,7 +49,7 @@
 
     $sender = PupSession::getUsername();
     Notification::sendNotification($recipientID, 'Teas received', 
-        "You have been gifted $giftAmount teas from $sender")
+        "You have been gifted $giftAmount teas from $sender");
     
     //success!
     echo $e->Success("Successfully gifted $giftAmount teas to $recipient");
