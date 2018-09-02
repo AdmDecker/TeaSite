@@ -160,7 +160,6 @@ class dbAccess
         $statement = $this->dbObject->prepare("SELECT userID FROM users WHERE $field=:fieldValue");
         $statement->bindParam('fieldValue', $fieldValue);
         $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
         $row = $statement->fetchAll();
         if (!empty($row))
             return $row;
