@@ -25,7 +25,7 @@
 
         public function SetLoginCookie($cookieValue)
         {
-            return $this->Build('setLoginCookie', $message, NULL);
+            return $this->Build('setLoginCookie', $cookieValue, NULL);
         }
 
         private function Build($action, $message, $redirectLocation)
