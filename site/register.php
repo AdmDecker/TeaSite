@@ -1,5 +1,5 @@
 <?php
-  require_once('dbaccess.php');
+  require_once('dbUser.php');
 	require_once('PupError.php');
 	require_once('Session.php');
 
@@ -19,7 +19,7 @@
 
 	try {
 		//Create our database object
-		$db = new dbAccess();
+		$db = new dbUser();
 
 		//Check if the user already exists.
 		$user_inDB = $db->getUserID($username);

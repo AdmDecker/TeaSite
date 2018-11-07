@@ -1,5 +1,5 @@
 <?php
-    require_once('dbaccess.php');
+    require_once('dbUser.php');
     require_once('PupError.php');
     require_once('Session.php');
 
@@ -11,7 +11,7 @@
 
 	try 
     {   
-        $db = new dbaccess();
+        $db = new dbUser();
         
         //Verify username exists
         $userID = $db->getUserID($username);

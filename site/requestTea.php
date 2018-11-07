@@ -2,7 +2,7 @@
 	require_once('Session.php');
 	require_once('PupError.php');
 	require_once('Notification.php');
-	require_once('dbaccess.php');
+	require_once('dbUser.php');
 
 	PupSession::Validate();
 
@@ -15,7 +15,7 @@
 		exit( $e->Error('You can\'t order right now! Please wait 15 minutes before ordering again.') );
 	}
 	
-	$db = new dbAccess();
+	$db = new dbUser();
 	$storeUserID = $db->getUserID('amber');
 	
 	PupSession::OrderTea();

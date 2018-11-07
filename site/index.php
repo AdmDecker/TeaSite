@@ -1,14 +1,14 @@
 <?php
     // includes
     require_once('Session.php');
-    require_once('dbaccess.php');
+    require_once('dbUser.php');
 
     trigger_error('cooking login');
     //Check for cookie
     if (isset($_COOKIE['loginCookie']) && PupSession::getUserType() === 'U')
     {
         trigger_error($_COOKIE['loginCookie']);
-        $db = new dbAccess();
+        $db = new dbUser();
         $userID = $db->getUserByCookie($_COOKIE['loginCookie']);
         trigger_error('userID: '.$userID);
         if ($userID != NULL)

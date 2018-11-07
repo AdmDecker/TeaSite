@@ -1,6 +1,6 @@
 <?php
     require_once('Session.php');
-    require_once('dbaccess.php');
+    require_once('dbUser.php');
     require_once('PupError.php');
     require_once('Notification.php');
 
@@ -14,7 +14,7 @@
     $userID = PupSession::getUserID();
     $teas = PupSession::getTeas();
     
-    $db = new dbAccess();
+    $db = new dbUser();
     $recipientID = $db->getUserID($recipient);
     
     if(!isset($recipientID))

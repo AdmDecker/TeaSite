@@ -1,13 +1,13 @@
 <?php
     require_once('Session.php');
-    require_once('dbaccess.php');
+    require_once('dbUser.php');
     require_once('PupError.php');
 
     PupSession::Validate();
 
     $POST = json_decode(file_get_contents('php://input'), true);
     $form = $POST['form'];
-    $db = new dbAccess();
+    $db = new dbUser();
     $username = PupSession::getUsername();
     $userID = PupSession::getUserID();
 

@@ -1,5 +1,5 @@
 <?php
-    require_once('dbaccess.php');
+    require_once('dbUser.php');
     require_once('Session.php');
     require_once('PupError.php');
     require_once('Notification.php');
@@ -17,7 +17,7 @@
     }
 
     $oldTeas = 0;
-    $db = new dbAccess();
+    $db = new dbUser();
     $username = '';
     try {
         $username = $db->getUsername($userID);

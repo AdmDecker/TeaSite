@@ -1,5 +1,6 @@
 <?php
     require_once('Session.php');
+    PupSession::LoadSession();
     PupSession::Validate();
     $teas = PupSession::getTeas();
     $canOrder = PupSession::canOrder();
@@ -14,6 +15,8 @@
         <script src='jquery.js'></script>
         <script src='common.js'></script>
         <script>
+            debug = true;
+
             function toggleOrdering(enable) {
                 if (enable) {
                     $('#requestTea').removeClass('w3-disabled');
@@ -24,75 +27,50 @@
                     $('#minutesMessage').removeClass('hidden');
                 }
             }
-
-            function updateTeasCounter() {
-                displayError('teasCounter', 'You have ' + teas + ' teas');
-                if (teas <= 0)
-                    toggleOrdering(false);
-            }
             
             function requestTea() {
-                if (teas <= 0) return;
-                
-                let dataObject = {
-                    'requestMessage': getInputValue('orderMessage'),
-                }
+
+                let dataObject = {};
+                dataObject.requestMessage = document.getElementById('orderMessage').value;
                 
                 let action = '/requestTea.php';
                 let form = 'requestTea';
-
-                const callBack = function (message) {
-                    displayError(form, message);
-                }
-
-                const successCallBack = function(message) {
-                    callBack(message);
-                    teas = teas - 1;
-                    updateTeasCounter();
-                }
                 
                 asyncSend(
                     action,
                     form,
                     dataObject,
-                    successCallBack,
-                    callBack
+                    function () {  },
+                    function () { window.location = '/orderFailed.html'; },
+                    debug
                 );
-
-                toggleOrdering(false);
             }
             
             function giftTeas() {
-                const form = 'gift';
-                const giftAmount = getInputValue('giftAmount');
+                let form = 'gift';
                 
                 let dataObject = {
                     giftRecipient: getInputValue('giftRecipient'),
-                    giftAmount: giftAmount,
+                    giftAmount: getInputValue('giftAmount'),
                 };
                 
                 const callBack = function (message) { displayError( form, message); };
-                const successCallBack = function (giftAmount) {
-                    return function (message) {
-                        callBack(message);
-                        teas = teas - giftAmount;
-                        updateTeasCounter();
-                    }
-                }
                 
                 asyncSend(
                     '/gift.php',
                     form,
                     dataObject,
-                    successCallBack(giftAmount),
-                    callBack
+                    callBack,
+                    callBack,
+                    debug
                 );
-
-                setInputValue('giftAmount', '0');
             }
+
+            <?php
+                if ($teas <= 0)
+                    echo 'toggleOrdering(false);';
+            ?>
         </script>
-        <link rel="apple-touch-icon" href="puppy.png" />
-        <link rel="icon" href='puppy.png' />
     </head>
     <body>
         <header class="main-header">
@@ -104,10 +82,25 @@
         </header>
         <div class='center' style="text-align: center">
             <h2 class='center'>Welcome <?php echo PupSession::getUsername(); ?></h2>
-            <p class='center' id='teasCounterError'></p>
-            <input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>
-            <button id='requestTea' onclick='requestTea()' class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>
-            <br /><br /><label id='requestTeaError'></label>
+
+            <div id='storelist'>
+                <div data-bind="foreach: storefront">
+                    <span>
+                        <p data-bind="text: storeName"></p>
+                        <p data-bind="text: itemCount"></p>
+                        <input type='text' data-bind="input: orderMessage" class='w3-input center login-input' placeholder='Order Message' />
+                        <button class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>
+                        <input data-bind="giftRecipient" type='text' id='giftRecipient' class='w3-input' style='width: 75%; display: inline-block' placeholder='Gift Recipient' />
+                    </span>
+                </div>
+            </div>
+
+            <p class='center'>You have <?php echo $teas; ?> teas</p>
+            <?php
+                echo "<input type='text' id='orderMessage' class='w3-input center login-input' placeholder='Order Message' /><br/><br/>";
+                echo "<button class='w3-button w3-blue w3-disabled login-input'>Order Tea</button>";
+                echo "<p id='minutesMessage'>You may only order once every 15 minutes</p>";
+            ?>
             <label class='error' id='requestTeaError'></label>
             <br /><br />
             <h3 class='center'>Gift Teas</h3>
@@ -118,13 +111,7 @@
             <button class='w3-button login-input center w3-blue' onclick='giftTeas()'>Gift Teas</button><br />
             <label class='error' id='giftError'></label>
             
-            <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location.href='/logout.php'">Logout</button></div>
+            <div><button class="w3-button login-input center w3-blue" style="margin-top: 50px;" onclick="window.location='/logout.php'">Logout</button></div>
         </div>
-        <br /><br /><br /><br />
-        <script>
-            teas = <?php echo $teas ?>;
-            toggleOrdering(true);
-            updateTeasCounter(teas);
-        </script>
     </body>
 </html>

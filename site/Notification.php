@@ -1,11 +1,11 @@
 <?php
-require_once('dbaccess.php');
+require_once('dbUser.php');
 
 class Notification 
 {
     public static function sendNotification($userID, $subject, $message)
     {
-        $db = new dbAccess();
+        $db = new dbUser();
 
         $email = $db->getEmail($userID);
         //Find out if user has notification settings enabled

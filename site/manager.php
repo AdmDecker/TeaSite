@@ -1,12 +1,12 @@
 <?php
     require_once('Session.php');
-    require_once('dbaccess.php');
+    require_once('dbUser.php');
 
     if (PupSession::getUserType() != 'M')
         header('Location: /index.php');
 
     //get all the user data
-    $db = new dbAccess();
+    $db = new dbUser();
     $data = $db->getAllUsersByRole('C');
 ?>
 <!DOCTYPE html>

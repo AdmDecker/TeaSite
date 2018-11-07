@@ -1,12 +1,12 @@
 <?php
-require_once('dbaccess.php');
+require_once('dbUser.php');
 require_once('PupError.php');
 
 class PupSession {
 
     public static function Login($userID, $createCookie = FALSE)
     {
-        $db = new dbAccess();
+        $db = new dbUser();
 
         $timeout = time() + (86400 * 3); //3 days
 
@@ -27,7 +27,7 @@ class PupSession {
 
     public static function Logout()
     {
-        $db = new dbAccess();
+        $db = new dbUser();
         $e = new PupError('login');
         $e->SetLoginCookie('');
         $db->setUserCookie(PupSession::getUserID(), '');
@@ -123,7 +123,7 @@ class PupSession {
         else
         {
             $username = PupSession::getUserID();
-            $db = new dbAccess();
+            $db = new dbUser();
             $_SESSION['username'] = $db->getUsername($userID);
             return $_SESSION['username'];
         }
@@ -133,7 +133,7 @@ class PupSession {
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
-        $db = new dbAccess();
+        $db = new dbUser();
         try {
             $db->setUsername($userID, $newUsername);
         }
@@ -149,7 +149,7 @@ class PupSession {
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
-        $db = new dbAccess();
+        $db = new dbUser();
         return $db->getUserTeas($userID);
     }
 
@@ -159,7 +159,7 @@ class PupSession {
         $userID = PupSession::getUserID();
         if (PupSession::getTeas() < 1)
             return FALSE;
-        $db = new dbAccess();
+        $db = new dbUser();
         $timeOfNextOrder = $db->getTimeOfNextOrder($userID);
         return time() > $timeOfNextOrder;
     }
@@ -168,7 +168,7 @@ class PupSession {
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
-        $db = new dbAccess();
+        $db = new dbUser();
         $db->setTimeOfNextOrder($userID, time() + 60 * 15);
         $db->decrementUserTeas($userID);
     }
@@ -177,7 +177,7 @@ class PupSession {
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
-        $db = new dbAccess();
+        $db = new dbUser();
         return $db->getEmail($userID);
     }
     
@@ -185,7 +185,15 @@ class PupSession {
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
-        $db = new dbAccess();
+        $db = new dbUser();
         return $db->getEmailEnabled($userID);
+    }
+
+    public static function getStoreFront()
+    {
+        PupSession::LoadSession();
+        $username = PupSession::getUsername();
+        $db = new dbUser();
+        $stores = $db->getStores();
     }
 }
