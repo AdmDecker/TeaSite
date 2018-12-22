@@ -92,7 +92,7 @@ function defaultCallback(formId, message, error)
 }
 
 function setCookie(cname, cvalue) {
-    let maxAge = "max-age=31536000;"; //1 year
+    let maxAge = "max-age=31536000"; //1 year
     document.cookie = cname + "=" + cvalue + ";" + maxAge +
      ";path=/";
 }
