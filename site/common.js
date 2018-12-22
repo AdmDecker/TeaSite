@@ -91,8 +91,10 @@ function defaultCallback(formId, message, error)
         return function () { displayError(formId, message) }
 }
 
-function setCookie(cname, cvalue, exdays) {
-    document.cookie = cname + "=" + cvalue + ";" + ";path=/";
+function setCookie(cname, cvalue) {
+    max-age = "max-age=31536000;"; //1 year
+    document.cookie = cname + "=" + cvalue + ";" + max-age +
+     ";path=/";
 }
 
 function redirectPage(newPage) {
