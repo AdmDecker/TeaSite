@@ -28,8 +28,13 @@
         exit( $e->Error('Database error: '.$ex->getMessage()) );
     }
 
-    Notification::sendNotification($userID, 'Your teas count has changed',
-        "Old amount: $oldTeas <br> New amount: $amount");
-        
-    echo $e->Success("Successfully set teas for $username to $amount");
+    if ($oldTeas != $amount) {
+        Notification::sendNotification($userID, 'Your teas count has changed',
+            "New amount: $amount <br> Old amount: $oldTeas ");
+
+        echo $e->Success("Successfully set teas for $username to $amount");
+    }
+    else {
+        exit( $e->Error('Please change the number of Teas before saving') );
+    }
 ?>
