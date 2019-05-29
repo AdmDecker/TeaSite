@@ -157,7 +157,7 @@ class PupSession {
     {
         PupSession::LoadSession();
         $userID = PupSession::getUserID();
-        if (PupSession::getTeas() < 1)
+        if (PupSession::getTeas() < -5)
             return FALSE;
         $db = new dbAccess();
         $timeOfNextOrder = $db->getTimeOfNextOrder($userID);
