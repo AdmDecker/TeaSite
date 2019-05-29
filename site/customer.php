@@ -27,7 +27,7 @@
 
             function updateTeasCounter() {
                 displayError('teasCounter', 'You have ' + teas + ' teas');
-                if (teas <= 0)
+                if (teas <= -5)
                     toggleOrdering(false);
             }
             
