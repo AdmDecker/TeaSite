@@ -11,3 +11,13 @@ CREATE TABLE users
     loginCookie VARCHAR(255),
     PRIMARY KEY (userID)
 );
+
+CREATE TABLE transactions
+(
+    transactionID int NOT NULL AUTO_INCREMENT,
+    userID int NOT NULL,
+    timestamp int,
+
+    PRIMARY KEY(transactionID),
+    FOREIGN KEY(userID) REFERENCES users(userID)
+);

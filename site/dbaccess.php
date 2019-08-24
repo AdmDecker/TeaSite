@@ -19,21 +19,6 @@ class dbAccess
     {
         $dbObject = NULL;
     }
-    
-    //Do not use this for Driver, use addDriver instead
-    //Do not use this for Customer, use addCustomer instead
-    //Returns userID of the added user
-    public function addUser($username, $password, $role)
-    {
-        //Insert user to database
-        $username = trim($username);
-        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0, NULL, 0, 0)");
-        $statement->bindParam(':username', $username);
-        $statement->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
-        $statement->bindParam(':role', $role);
-        $statement->execute();
-        return $this->dbObject->lastInsertId();
-    }
 
     public function getAllUsersByRole($role)
     {
@@ -156,6 +141,26 @@ class dbAccess
             return NULL;
     }
 
+    public function addTransaction($userID, $actingUserID, $message)
+    {
+        $statement = $this->dbObject->prepare("INSERT INTO transactions VALUES(NULL, $userID, $actingUserID, :message)");
+        $statement->bindParam(':message', $message);
+        $statement->execute();
+    }
+
+    public function getTransactionsByUser($userID) 
+    {
+        $statement = $this->dbObject->prepare("
+            SELECT
+            actor.username AS actorUsername,
+            
+
+            FROM transactions t
+            INNER JOIN users actor ON t.actingUserID = users.userID
+            WHERE t.userID = $userID
+        ")
+    }
+
     private function getUsersByField($field, $fieldValue)
     {
         $statement = $this->dbObject->prepare("SELECT * FROM users WHERE $field=:fieldValue");
@@ -169,6 +174,19 @@ class dbAccess
         else {
             return NULL;
         }
+    }
+
+    //Returns userID of the added user
+    public function addUser($username, $password, $role)
+    {
+        //Insert user to database
+        $username = trim($username);
+        $statement = $this->dbObject->prepare("insert into users values(NULL, :username, :password, :role, 0, 0, NULL, 0, 0)");
+        $statement->bindParam(':username', $username);
+        $statement->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
+        $statement->bindParam(':role', $role);
+        $statement->execute();
+        return $this->dbObject->lastInsertId();
     }
 
     private function getUserByField($field, $fieldValue)
