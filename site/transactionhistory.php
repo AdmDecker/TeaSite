@@ -3,6 +3,7 @@
     require_once('Session.php');
     require_once('PupError.php');
     require_once('Notification.php');
+    PupSession::Validate();
 
     $POST = json_decode(file_get_contents('php://input'), true);
     $e = new PupError();

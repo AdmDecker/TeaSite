@@ -3,6 +3,7 @@
     require_once('Session.php');
     require_once('PupError.php');
     require_once('Notification.php');
+    require_once('TranHistoryLogger.php');
 
     $POST = json_decode(file_get_contents('php://input'), true);
 
@@ -31,6 +32,8 @@
     if ($oldTeas != $amount) {
         Notification::sendNotification($userID, 'Your teas count has changed',
             "New amount: $amount <br> Old amount: $oldTeas ");
+
+        TranHistoryLogger::logTransaction($userID, "SET $username's TEAS TO $amount");
 
         echo $e->Success("Successfully set teas for $username to $amount");
     }

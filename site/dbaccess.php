@@ -153,12 +153,15 @@ class dbAccess
         $statement = $this->dbObject->prepare("
             SELECT
             actor.username AS actorUsername,
-            
-
+            message
             FROM transactions t
             INNER JOIN users actor ON t.actingUserID = users.userID
             WHERE t.userID = $userID
-        ")
+        ");
+
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement->fetch();
     }
 
     private function getUsersByField($field, $fieldValue)

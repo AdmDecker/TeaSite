@@ -3,6 +3,7 @@
 	require_once('PupError.php');
 	require_once('Notification.php');
 	require_once('dbaccess.php');
+	require_once('TranHistoryLogger.php');
 
 	PupSession::Validate();
 
@@ -16,7 +17,7 @@
 	}
 	
 	$db = new dbAccess();
-	$storeUserID = $db->getUserID('amber');
+	$storeUserID = $db->getUserID('Amber');
 	
 	PupSession::OrderTea();
 	
@@ -31,6 +32,8 @@
 
 	Notification::sendNotification(PupSession::GetUserID(), 
 		'Tea Ordered', 'A tea has been ordered from your account.');
+
+	TranHistoryLogger::logTransaction($orderer, "ORDERED 1 TEA");
 
 	echo $e->Success('Successfully ordered a tea!');
 ?>
