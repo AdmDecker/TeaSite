@@ -6,7 +6,7 @@
     PupSession::Validate();
 
     $POST = json_decode(file_get_contents('php://input'), true);
-    $e = new PupError();
+    $e = new PupError('transactionhistory');
     $db = new dbAccess();
 
     $userID = PupSession::getUserID();
