@@ -9,11 +9,6 @@
     $e = new PupError();
     $db = new dbAccess();
 
-    if (PupSession::getUserType(PupSession::getUserID()) != 'M')
-    {
-        exit( $e->Error('Your session has expired. Please log in again') );
-    }
-
     $userID = PupSession::getUserID();
 
     try {
