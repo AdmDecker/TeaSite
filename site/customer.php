@@ -13,6 +13,8 @@
         <link href="style.css" rel="stylesheet" type="text/css">
         <script src='jquery.js'></script>
         <script src='common.js'></script>
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css">
+        <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script>
         <script>
             function toggleOrdering(enable) {
                 if (enable) {
@@ -120,7 +122,10 @@
             
             <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location.href='/logout.php'">Logout</button></div>
         </div>
-        <br /><br /><br /><br />
+        <br /><br />
+        <table src='transactionhistory.php'>
+        </table>
+        <br /><br />
         <script>
             teas = <?php echo $teas ?>;
             toggleOrdering(true);
