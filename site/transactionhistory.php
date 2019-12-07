@@ -22,7 +22,7 @@
         exit( $e->Error('Database error: '.$ex->getMessage()) );
     }
 
-    trigger_error('transactionhistory tableData' + strval($tableData));
+    trigger_error('transactionhistory tableData' .strval($tableData));
 
     echo json_encode($tableData);
 ?>
