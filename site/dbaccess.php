@@ -163,7 +163,7 @@ class dbAccess
 
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 
     private function getUsersByField($field, $fieldValue)

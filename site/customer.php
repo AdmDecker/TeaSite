@@ -3,7 +3,6 @@
     PupSession::Validate();
     $teas = PupSession::getTeas();
     $canOrder = PupSession::canOrder();
-    trigger_error("Trigger error test from Customer.php");
 ?>
 
 <!DOCTYPE html>
