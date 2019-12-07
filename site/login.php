@@ -16,7 +16,7 @@
         //Verify username exists
         $userID = $db->getUserID($username);
         if (is_null($userID)) {
-            exit( $e->Error('Login Failed: User does not exist') );
+            exit( $errorHandler->Error('Login Failed: User does not exist') );
         }
 		
         //Fetch password for user from DB
