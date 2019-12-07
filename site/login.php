@@ -3,7 +3,7 @@
     require_once('PupError.php');
     require_once('Session.php');
 
-	$e = new PupError('login');
+	$errorHandler = new PupError('login');
 
 	$POST = json_decode(file_get_contents('php://input'), true);
     $password = $POST['password'];
@@ -27,11 +27,11 @@
             PupSession::Login($userID, TRUE);
         }	
 		else
-			echo $e->Error( 'Login Failed: Username and password do not match' );				
+			echo $errorHandler->Error( 'Login Failed: Username and password do not match' );				
 	}
 	catch(PDOException $e)
 	{
-		echo $e->Error( 'Database error: ' . $e->getMessage() );
+		echo $errorHandler->Error( 'Database error: ' . $e->getMessage() );
 	}
     exit();
 ?>
