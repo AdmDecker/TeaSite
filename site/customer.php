@@ -123,7 +123,7 @@
             <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location.href='/logout.php'">Logout</button></div>
         </div>
         <br /><br />
-        <table data-src='transactionhistory.php' data-toggle='table'>
+        <table data-src='/transactionhistory.php' data-toggle='table'>
             <thead>
                 <th data-field='actorUsername'>Actor</th>
                 <th data-field='message'>Log</th>
