@@ -16,6 +16,8 @@ CREATE TABLE transactions
 (
     transactionID int NOT NULL AUTO_INCREMENT,
     userID int NOT NULL,
+    actingUserId int NOT NULL,
+    message NVARCHAR(255),
     timestamp int,
 
     PRIMARY KEY(transactionID),

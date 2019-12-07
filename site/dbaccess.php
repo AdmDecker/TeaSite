@@ -143,8 +143,9 @@ class dbAccess
 
     public function addTransaction($userID, $actingUserID, $message)
     {
-        $statement = $this->dbObject->prepare("INSERT INTO transactions VALUES(NULL, $userID, $actingUserID, :message)");
+        $statement = $this->dbObject->prepare("INSERT INTO transactions VALUES(NULL, $userID, $actingUserID, :message, :timeStamp)");
         $statement->bindParam(':message', $message);
+        $statement->bindParam(':timeStamp', DateTime::GetTimeStamp());
         $statement->execute();
     }
 
