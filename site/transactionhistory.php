@@ -13,12 +13,16 @@
 
     $userID = PupSession::getUserID();
 
+    trigger_error("transactionhistory UserId: $userId")
+
     try {
         $tableData = $db->getTransactionsByUser($userID);
     }
     catch(PDOException $ex) {
         exit( $e->Error('Database error: '.$ex->getMessage()) );
     }
+
+    trigger_error('transactionhistory tableData' + strval($tableData));
 
     echo json_encode($tableData);
 ?>
