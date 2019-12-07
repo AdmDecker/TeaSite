@@ -146,7 +146,7 @@ class dbAccess
         $dateTime = new DateTime();
         $statement = $this->dbObject->prepare("INSERT INTO transactions VALUES(NULL, $userID, $actingUserID, :message, :timeStamp)");
         $statement->bindParam(':message', $message);
-        $statement->bindParam(':timeStamp', new $dateTime->GetTimeStamp());
+        $statement->bindParam(':timeStamp', $dateTime->GetTimeStamp());
         $statement->execute();
     }
 
