@@ -5,6 +5,8 @@
     require_once('Notification.php');
     PupSession::Validate();
 
+    trigger_error("reached transactionhistory.php");
+
     $POST = json_decode(file_get_contents('php://input'), true);
     $e = new PupError('transactionhistory');
     $db = new dbAccess();
