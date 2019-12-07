@@ -13,7 +13,7 @@
 
     $userID = PupSession::getUserID();
 
-    trigger_error("transactionhistory UserId: $userId")
+    trigger_error("transactionhistory UserId: $userId");
 
     try {
         $tableData = $db->getTransactionsByUser($userID);
