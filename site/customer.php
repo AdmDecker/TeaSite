@@ -122,15 +122,15 @@
             <label class='error' id='giftError'></label>
             
             <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location.href='/logout.php'">Logout</button></div>
+            <br /><br />
+            <table data-url='transactionhistory.php' data-toggle='table'>
+                <thead>
+                    <th data-field='actorUsername'>Actor</th>
+                    <th data-field='message'>Log</th>
+                    <th data-field='timestamp'>Date/Time</th>
+                </thead>
+            </table>
         </div>
-        <br /><br />
-        <table data-url='transactionhistory.php' data-toggle='table'>
-            <thead>
-                <th data-field='actorUsername'>Actor</th>
-                <th data-field='message'>Log</th>
-                <th data-field='timestamp'>Date/Time</th>
-            </thead>
-        </table>
         <br /><br />
         <script>
             teas = <?php echo $teas ?>;
