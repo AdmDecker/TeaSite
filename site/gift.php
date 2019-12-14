@@ -56,7 +56,7 @@
     Notification::sendNotification($recipientID, 'Teas received', 
         "You have been gifted $giftAmount teas from $sender");
 
-    TranHistoryLogger::logTransaction($userID, "RECEIVED $giftAmount TEAS FROM $sender; GIFT", $newRecipientTeas);
+    TranHistoryLogger::logTransaction($recipientID, "RECEIVED $giftAmount TEAS FROM $sender; GIFT", $newRecipientTeas);
     
     //success!
     echo $e->Success("Successfully gifted $giftAmount teas to $recipient");

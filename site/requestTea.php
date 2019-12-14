@@ -34,7 +34,8 @@
 		'Tea Ordered', 'A tea has been ordered from your account.');
 
 	$teas = PupSession::getTeas();
-	TranHistoryLogger::logTransaction($orderer, "ORDERED 1 TEA", $teas);
+	$userID = PupSession::getUserID();
+	TranHistoryLogger::logTransaction($userID, "ORDERED 1 TEA", $teas);
 
 	echo $e->Success('Successfully ordered a tea!');
 ?>
