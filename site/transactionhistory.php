@@ -22,7 +22,7 @@
         exit( $e->Error('Database error: '.$ex->getMessage()) );
     }
 
-    foreach ($tableData as $data) {
+    foreach ($tableData as &$data) {
         $data['timestamp'] = date("D M j G:i:s", $data['timestamp']);
     }
 
