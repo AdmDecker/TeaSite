@@ -30,10 +30,11 @@
 	
 	Notification::sendNotification($storeUserID, $subject, $message);
 
-	Notification::sendNotification(PupSession::GetUserID(), 
+	Notification::sendNotification(PupSession::getUserID(), 
 		'Tea Ordered', 'A tea has been ordered from your account.');
 
-	TranHistoryLogger::logTransaction($orderer, "ORDERED 1 TEA");
+	$teas = PupSession::getTeas();
+	TranHistoryLogger::logTransaction($orderer, "ORDERED 1 TEA", $teas);
 
 	echo $e->Success('Successfully ordered a tea!');
 ?>

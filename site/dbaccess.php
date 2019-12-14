@@ -141,12 +141,13 @@ class dbAccess
             return NULL;
     }
 
-    public function addTransaction($userID, $actingUserID, $message)
+    public function addTransaction($userID, $actingUserID, $message, $teas)
     {
         $dateTime = new DateTime();
-        $statement = $this->dbObject->prepare("INSERT INTO transactions VALUES(NULL, $userID, $actingUserID, :message, :timeStamp)");
+        $statement = $this->dbObject->prepare("INSERT INTO transactions VALUES(NULL, $userID, $actingUserID, :message, :timeStamp, :teas)");
         $statement->bindParam(':message', $message);
         $statement->bindParam(':timeStamp', $dateTime->GetTimeStamp());
+        $statement->bindParam(':teas', $teas);
         $statement->execute();
     }
 
@@ -156,7 +157,8 @@ class dbAccess
             SELECT
             actor.username AS actorUsername,
             message,
-            timestamp
+            timestamp,
+            teas
             FROM transactions t
             INNER JOIN users actor ON t.actingUserID = actor.userID
             WHERE t.userID = $userID

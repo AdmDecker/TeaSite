@@ -33,7 +33,7 @@
         Notification::sendNotification($userID, 'Your teas count has changed',
             "New amount: $amount <br> Old amount: $oldTeas ");
 
-        TranHistoryLogger::logTransaction($userID, "SET $username's TEAS TO $amount");
+        TranHistoryLogger::logTransaction($userID, "SET $username's TEAS TO $amount", $amount);
 
         echo $e->Success("Successfully set teas for $username to $amount");
     }
