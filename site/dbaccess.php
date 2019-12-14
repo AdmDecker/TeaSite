@@ -157,7 +157,7 @@ class dbAccess
             actor.username AS actorUsername,
             message
             FROM transactions t
-            INNER JOIN users actor ON t.actingUserID = users.userID
+            INNER JOIN users actor ON t.actingUserID = actor.userID
             WHERE t.userID = $userID
         ");
 
