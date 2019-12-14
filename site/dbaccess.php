@@ -162,8 +162,7 @@ class dbAccess
         ");
 
         $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement->fetchAll();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     private function getUsersByField($field, $fieldValue)
