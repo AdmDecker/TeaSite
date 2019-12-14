@@ -162,6 +162,7 @@ class dbAccess
             FROM transactions t
             INNER JOIN users actor ON t.actingUserID = actor.userID
             WHERE t.userID = $userID
+            ORDER BY t.transactionID DESC
         ");
 
         $statement->execute();
