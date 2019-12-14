@@ -128,6 +128,7 @@
             <thead>
                 <th data-field='actorUsername'>Actor</th>
                 <th data-field='message'>Log</th>
+                <th data-field='timestamp'>Date/Time</th>
             </thead>
         </table>
         <br /><br />

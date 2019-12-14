@@ -155,7 +155,8 @@ class dbAccess
         $statement = $this->dbObject->prepare("
             SELECT
             actor.username AS actorUsername,
-            message
+            message,
+            timestamp
             FROM transactions t
             INNER JOIN users actor ON t.actingUserID = actor.userID
             WHERE t.userID = $userID
