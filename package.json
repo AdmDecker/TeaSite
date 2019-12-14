@@ -11,7 +11,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-table": "^1.15.4",
     "jquery": "^3.4.1",
-    "knockout": "^3.4.2",
+    "knockout": "^3.5.0",
     "php": "^0.0.1"
   },
   "devDependencies": {},
