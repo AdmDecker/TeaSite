@@ -158,7 +158,7 @@ class dbAccess
             actor.username AS actorUsername,
             message,
             timestamp,
-            teas
+            t.teas
             FROM transactions t
             INNER JOIN users actor ON t.actingUserID = actor.userID
             WHERE t.userID = $userID
