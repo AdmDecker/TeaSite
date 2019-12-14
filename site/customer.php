@@ -11,8 +11,11 @@
         <meta name="viewport" content="width=device-width" />
         <link href="w3.css" rel="stylesheet" type="text/css">
         <link href="style.css" rel="stylesheet" type="text/css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <script src='jquery.js'></script>
         <script src='common.js'></script>
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css">
+        <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script>
         <script>
             function toggleOrdering(enable) {
                 if (enable) {
@@ -119,8 +122,17 @@
             <label class='error' id='giftError'></label>
             
             <div><button class="w3-button login-input center w3-red" style="margin-top: 50px;" onclick="window.location.href='/logout.php'">Logout</button></div>
+            <br /><br />
+            <table data-url='transactionhistory.php' data-toggle='table'>
+                <thead>
+                    <th data-field='actorUsername'>Actor</th>
+                    <th data-field='teas'>Teas</th>
+                    <th data-field='message'>Log</th>
+                    <th data-field='timestamp'>Date/Time</th>
+                </thead>
+            </table>
         </div>
-        <br /><br /><br /><br />
+        <br /><br />
         <script>
             teas = <?php echo $teas ?>;
             toggleOrdering(true);
