@@ -23,7 +23,7 @@
     }
 
     foreach ($tableData as &$data) {
-        $data['timestamp'] = date("D M j G:i:s", $data['timestamp']);
+        $data['timestamp'] = date("D M j Y g:i:s A", $data['timestamp']);
     }
 
     trigger_error('transactionhistory tableData' .strval($tableData));
